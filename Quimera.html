@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Quimera</title>
+        <link rel="stylesheet" href="./styles.css"> 
+        <script src="./js/CT.js"></script>
+    </head>
+    <body>
+        <div id="contenedor">
+        <div id="contenedorSistema">
+            <div id="recepcioDeDatos">
+                <h1>Quimera</h1>
+                <h6>Programa de tiro de lanzadores</h6>
+                <h4 class="titulo">Datos</h4> 
+            
+                    <div class="puntos subcajas">
+                        <span>
+                            <label for="xcb">X C.B.:</label>
+                            <input class="coordenada" type="number" id="xcb">
+                        </span>
+                        <span>
+                            <label for="ycb">Y C.B.:</label>
+                            <input class="coordenada" type="number" id="ycb">
+                        </span>
+                        <span>
+                            <label for="zcb">Z C.B.:</label>
+                            <input class="coordenada" type="number" id="zcb">
+                        </span>
+                        <span>
+                            <label for="xpv">X P.V.:</label>
+                            <input class="coordenada" type="number" id="xpv">
+                        </span>
+                        <span>
+                            <label for="ypv">Y P.V..:</label>
+                            <input class="coordenada" type="number" id="ypv">
+                        </span>
+                        <span>
+                            <label for="zpv">Z P.V.:</label>
+                            <input class="coordenada" type="number" id="zpv">
+                        </span>
+                        <span>
+                            <label for="xpo">X P.O.:</label>
+                            <input class="coordenada" type="number" id="xpo">
+                        </span>
+                        <span>
+                            <label for="ypo">Y P.O.:</label>
+                            <input class="coordenada" type="number" id="ypo">
+                        </span>
+                        <span>
+                            <label for="xdr">X D.R.:</label>
+                            <input class="coordenada" type="number" id="xdr">
+                        </span>
+                        <span>
+                            <label for="ydr">Y D.R.:</label>
+                            <input class="coordenada" type="number" id="ydr">
+                        </span>
+                        <span>
+                            <label for="velViento">Velocidad de Viento</label>
+                            <input type="number" id="velViento">
+                        </span>
+                        <span>
+                            <label for="orV">Orientación de Viento.:</label>
+                            <input type="number" id="orV">
+                        </span>
+                    </div>
+                                
+                <input type="button" name="alcance" value="Alcance" id="btnAlcance">
+              <!--  <input type="button" name="alcance" value="Alcance" id="btnAlcance" onclick="deltaXA (), deltaYA (), deltaXB (), deltaYB (), deltaXC (), deltaYC (), deltaZ (), alcancePvCb (), alcancePvPo (), cuadrante (), visible (), orientObs (), rdirV (), dirV (), direcDr (), orDr (), angVigi (), sitioPvCb (), alzaCb (), altMaxCB (), velVientoAMEA (), AngVient (),  descX (),  descZ (), colK (), colD (), corrOR (), colE (), colF (), corrAlc ()">-->
+                
+                </div>
+
+            <section id="comandosIniciales">
+                <h2 class="titulo">Comandos Provisorios</h2> 
+
+                <div class="comandos" id="cuadrante">    
+                    <label>cuadrante:</label>
+                    <p id="ncuadrante"></p>
+                </div> 
+
+                <div class="comandos">    
+                    <label>alcance:</label>
+                    <input type="number" id="alcance">
+                </div> 
+
+                <div class="comandos">    
+                    <label>Orientación de Referencia:</label>
+                    <p id="4600"></p>
+                </div>
+
+                <div class="comandos">    
+                    <label>Compensación por rotación:</label>
+                    <p id="4"></p>
+                </div>
+
+                <div class="comandos">    
+                    <label>Orientación del Observador:</label>
+                    <input type="number" id="orObs">
+                </div>
+
+                <div class="comandos">    
+                    <label>D.V.:</label>
+                    <input type="number" id="dV">
+                </div>
+
+                <div class="comandos">    
+                    <label>Orientación a la D.R.:</label>
+                    <input type="number" id="dDr">
+                </div>
+
+                <div class="comandos">    
+                    <label>Ang. Vigilancia.:</label>
+                    <input type="number" id="angVig">
+                </div>
+
+                <div class="comandos">    
+                    <label>Distancia del Observador al blanco:</label>
+                    <input type="number" id="alcPvPo">
+                </div>
+
+                <div class="comandos">    
+                    <label>Alza:</label>
+                    <input type="number" id="alza">
+                </div>
+
+                <div class="comandos">    
+                    <label>Sitio:</label>
+                    <input type="number" id="sitio">
+                </div>     
+            </section>
+            
+            <section id="datosMeteorologicos">
+                <h2 class="titulo">Comandos Iniciales</h2> 
+
+                <div class="comandos">
+                    <label>Ángulo de Viento.:</label>
+                    <input type="number" id="angViento"> 
+                </div>
+
+                <div class="comandos">
+                    <label>Altura Máxima E.A.:</label>
+                    <input type="number" id="altMax">
+                </div>
+
+                <div class="comandos">
+                    <label>Vel. Viento en Altura Máxima E.A.:</label>
+                    <input type="number" id="vVAltMax">
+                </div>
+                    
+                <div class="comandos">
+                    <label>WX:</label>
+                    <input type="number" id="wX"> 
+                </div>    
+
+                <div class="comandos">
+                    <label>WZ:</label>
+                    <input type="number" id="wZ">
+                </div>   
+
+                <div class="comandos">
+                    <label>Correccion en Orientacion:</label>
+                    <input type="number" id="correcOr">
+                </div>  
+
+                <div class="comandos">
+                    <label>Correccion en Alcance:</label>
+                    <input type="number" id="correcAlc">
+                </div>
+                    
+            </section>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+
