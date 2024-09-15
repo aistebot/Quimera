@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Quimera</title>
+        <title>Quimera.</title>
         <link rel="stylesheet" href="./styles.css"> 
         <script src="./js/CT.js"></script>
     </head>
@@ -10,7 +10,7 @@
         <div id="contenedor">
         <div id="contenedorSistema">
             <div id="recepcioDeDatos">
-                <h1>Quimera......</h1>
+                <h1>Quimera.</h1>
                 <h6>Programa de tiro de lanzadores</h6>
                 <h4 class="titulo">Datos</h4> 
             
@@ -60,114 +60,166 @@
                             <input type="number" id="velViento">
                         </span>
                         <span>
-                            <label for="orV">Orientación de Viento.:</label>
+                            <label for="orV">Or. de V.:</label>
                             <input type="number" id="orV">
                         </span>
                     </div>
                                 
-                <input type="button" name="alcance" value="Alcance" id="btnAlcance">
-              <!--  <input type="button" name="alcance" value="Alcance" id="btnAlcance" onclick="deltaXA (), deltaYA (), deltaXB (), deltaYB (), deltaXC (), deltaYC (), deltaZ (), alcancePvCb (), alcancePvPo (), cuadrante (), visible (), orientObs (), rdirV (), dirV (), direcDr (), orDr (), angVigi (), sitioPvCb (), alzaCb (), altMaxCB (), velVientoAMEA (), AngVient (),  descX (),  descZ (), colK (), colD (), corrOR (), colE (), colF (), corrAlc ()">-->
-                
+                <input type="button" name="alcance" value="Datos Iniciales" id="btnAlcance" onclick="deltaXA (), deltaYA (), deltaXB (), deltaYB (), deltaXC (), deltaYC (), deltaZ (), alcancePvCb (), alcancePvPo (),cuadrante (), orientObs (), dirV (), orDr (), angVigi (),sitioPvCb (), alzaCb (), altMaxCB (), velVientoAMEA (), AngVient (),  descX (),  descZ (), colK (), colD (), corrOR (), colE (), colF (), corrAlc (), alzaIni(), orIni()">
+              
                 </div>
-
+    <div class ="bodie">
+        <div class="container">
             <section id="comandosIniciales">
                 <h2 class="titulo">Comandos Provisorios</h2> 
 
-                <div class="comandos" id="cuadrante">    
-                    <label>cuadrante:</label>
-                    <p id="ncuadrante"></p>
-                </div> 
-
                 <div class="comandos">    
-                    <label>alcance:</label>
+                   <span>
+                    <label>Cuadrante:</label>
+                    <input type="number" id="cuadrante">
+                   </span> 
+                <span>
+                    <label>Alcance:</label>
                     <input type="number" id="alcance">
-                </div> 
-
-                <div class="comandos">    
-                    <label>Orientación de Referencia:</label>
-                    <p id="4600"></p>
-                </div>
-
-                <div class="comandos">    
-                    <label>Compensación por rotación:</label>
+                </span>   
+                    
+                <span>
+                    <label>Orientación de Referencia: 4600</label>
+                </span>    
+                    
+                <span>
+                    <label>Compensación por rotación: + 4</label>
                     <p id="4"></p>
-                </div>
-
-                <div class="comandos">    
+                </span> 
+                    
+                <span>
                     <label>Orientación del Observador:</label>
                     <input type="number" id="orObs">
-                </div>
-
-                <div class="comandos">    
+                </span>    
+                    
+                <span>
                     <label>D.V.:</label>
                     <input type="number" id="dV">
-                </div>
-
-                <div class="comandos">    
+                </span>   
+                    
+                <span>
                     <label>Orientación a la D.R.:</label>
-                    <input type="number" id="dDr">
-                </div>
-
-                <div class="comandos">    
+                    <input type="number" id="oDr">
+                </span>    
+                    
+                <span>
                     <label>Ang. Vigilancia.:</label>
                     <input type="number" id="angVig">
-                </div>
-
-                <div class="comandos">    
+                </span>  
+                    
+                <span>
                     <label>Distancia del Observador al blanco:</label>
                     <input type="number" id="alcPvPo">
-                </div>
-
-                <div class="comandos">    
+                </span>  
+                    
+                <span>
                     <label>Alza:</label>
                     <input type="number" id="alza">
-                </div>
-
-                <div class="comandos">    
+                </span>   
+                    
+                <span>
                     <label>Sitio:</label>
                     <input type="number" id="sitio">
-                </div>     
+                </span>   
+            </div>   
             </section>
             
             <section id="datosMeteorologicos">
-                <h2 class="titulo">Comandos Iniciales</h2> 
+                <h2 class="titulo">Datos Meteorológicos</h2> 
 
                 <div class="comandos">
-                    <label>Ángulo de Viento.:</label>
+                    <span>
+                        <label>Ángulo de Viento.:</label>
                     <input type="number" id="angViento"> 
-                </div>
-
-                <div class="comandos">
+                    </span>
+                    
+                <span>
                     <label>Altura Máxima E.A.:</label>
                     <input type="number" id="altMax">
-                </div>
-
-                <div class="comandos">
+                </span>
+                    
+                <span>
                     <label>Vel. Viento en Altura Máxima E.A.:</label>
                     <input type="number" id="vVAltMax">
-                </div>
+                </span>
                     
-                <div class="comandos">
+                <span>
                     <label>WX:</label>
-                    <input type="number" id="wX"> 
-                </div>    
-
-                <div class="comandos">
+                    <input type="number" id="wX">
+                </span>
+                     
+                <span>
                     <label>WZ:</label>
                     <input type="number" id="wZ">
-                </div>   
-
-                <div class="comandos">
+                </span>
+                    
+                <span>
                     <label>Correccion en Orientacion:</label>
                     <input type="number" id="correcOr">
-                </div>  
-
-                <div class="comandos">
-                    <label>Correccion en Alcance:</label>
-                    <input type="number" id="correcAlc">
+                </span>
+                    <span>
+                        <label>Correccion en Alcance:</label>
+                        <input type="number" id="correcAlc">
+                    </span>
                 </div>
-                    
             </section>
+     </div>
+     
+        <div class="container">
+            <section id="correcionOBS">
+                <h2 class="titulo">Correciiones Observador</h2> 
+
+                <div class="puntos subcajas">
+                    <span>
+                        <label>Alargar.:</label>
+                    <input class="coordenada" type="number" id="alargar"> 
+                    </span>
+                    
+                <span>
+                    <label>Acortar:</label>
+                    <input class="coordenada" type="number" id="acortar">
+                </span>
+                    
+                <span>
+                    <label>Derecha:</label>
+                    <input class="coordenada" type="number" id="derecha">
+                </span>
+                    
+                <span>
+                    <label>Izquierda:</label>
+                    <input class="coordenada" type="number" id="izquierda">
+                </span>
+                </div>
+            </section>
+            <input type="button" name="correc" value="Corrección" id="btnCorrec" onclick="alargarY (), acortarY (), derechaY (), izquierdaY (), yPrima (),alargarX (),acortarX (), derechaX (), izquierdaX (), xPrima (), deltaXAPri (), deltaYAPri (), alcancePvCbPri (), sitioPvCbPri (), alzaCbPri (), alzaIniC (), dirVPri (), difDV (), orIniP()">
+            <section id="datosIniciales">
+                <h2 class="titulo">datos Iniciales</h2> 
+
+                <div class="puntos subcajas">
+                    <span>
+                        <label>Orientación.:</label>
+                    <input type="number" id="orientIni"> 
+                    </span>
+                    
+                <span>
+                    <label>Sitio:</label>
+                    <input type="number" id="sitioIni">
+                </span>
+                    
+                <span>
+                    <label>alza:</label>
+                    <input type="number" id="alzaIni">
+                </span>
+
+                </div>
+            </section> 
+        </div>
+    </div>    
             </div>
         </div>
     </body>

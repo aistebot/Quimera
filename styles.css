@@ -33,7 +33,15 @@ h6 {
   font-size: 18px;
   margin-bottom: 20px;
 }
-
+.bodie {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+}
 #contenedor {
   display: flex;
   flex-direction: column;
@@ -48,7 +56,7 @@ h6 {
   display: flex;
   align-items: center;
   height: 80%;
-  max-width: 1100px;
+  max-width: 80%;
   background-color: lightgray;
   border-radius: 20px;
 }
@@ -66,8 +74,8 @@ h6 {
 #comandosIniciales, #datosMeteorologicos {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 0px 30px;
+  justify-content: left;
+  padding: 0px 10px;
 }
 
 .subcajas {
@@ -75,7 +83,8 @@ h6 {
   min-height: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; 
+  padding: 0px 10px 0px;  
 }
 
 .subcajas label {
@@ -107,8 +116,21 @@ input {
 }
 
 input#btnAlcance {
+  position: relative;
   background-color: #283670;
-  margin-top: 20px;
+  margin-top: 150px;
+  padding: 10px 0px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+input#btnCorrec {
+  position: relative;
+  background-color: #283670;
+  margin-top: 150px;
   padding: 10px 0px;
   border-radius: 10px;
   color: #fff;
@@ -122,8 +144,36 @@ input#btnAlcance:hover {
   background-color: #ebc000;
 }
 
+input#btnCorrec:hover {
+  background-color: #ebc000;
+}
 
+.comandos {
+  width: 100%;
+  min-height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
+.comandos label {
+  color:#283670;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.comandos input {
+  font-family: 'Montserrat', sans-serif;
+  color:#d43a00;
+  font-weight: 300;
+  font-size: 14px;
+}
+.comandos span {
+  border-bottom: solid 2px #999;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
 
 
 .color1 { color:#fdbf5c; };

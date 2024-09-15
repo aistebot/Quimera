@@ -1,10 +1,3 @@
-const cuadrantem = document.getElementById("ncuadrante");
-const comp = document.getElementById("4");
-const orRef = document.getElementById("4600");
-
-
-
-
 function deltaXA (){
     var xcb = Number(document.getElementById("xcb").value);
     var xpv = Number(document.getElementById("xpv").value);
@@ -42,96 +35,94 @@ function deltaZ (){
     return zpv - zcb;
 }
 function alcancePvCb (){
-    var alcance = Math.hypot(deltaXA (), deltaYA ());
+    var alcance = Math.hypot(deltaXA (), deltaYA ()).toFixed(2);
     document.getElementById("alcance").value = alcance; 
     return alcance;
 }  
 function alcancePvPo (){
-    var alcPvPo = Number.parseInt(Math.hypot(deltaXB (), deltaYB ()));
+    var alcPvPo = Number.parseInt(Math.hypot(deltaXB (), deltaYB ())).toFixed(2);
     document.getElementById("alcPvPo").value = alcPvPo;
 }  
+
 function cuadrante (){
 
     if(deltaXA () > 0 && deltaYA () > 0){
-        var ncuadrante = "Primer cuadrante"
+        var cuadrante = 1;
     }else if(deltaXA () > 0 && deltaYA () < 0){
-        var ncuadrante = "Segundo cuadrante"
+        var cuadrante = 2;
     }else if(deltaXA () < 0 && deltaYA () < 0){
-        var ncuadrante = "Tercer cuadrante"
+        var cuadrante = 3;
     }else {
-        var ncuadrante = "Cuarto cuadrante"
-    }
+        var cuadrante = 4;
+        }
+    document.getElementById("cuadrante").value = cuadrante;
+    return cuadrante;
+}  
 
-    cuadrantem.innerHTML = ncuadrante;
-}  
-function visible (){
-    comp.innerHTML = "4";
-    orRef.innerHTML = "4600";
-}  
 function orientObs (){
-    var orO = Number.parseInt(((Math.atan2(deltaXB (), deltaYB ())) / 0.0174533) / 0.06);
+    var orO = Number.parseInt(((Math.atan2(Math.abs(deltaXB ()), Math.abs(deltaYB ()))) / 0.0174533) / 0.06);
+    var orObs;
 
-    if(deltaXB () > 0 && deltaYB () > 0){
-        var orObs = Math.abs(orO);
-    }else if(deltaXB () > 0 && deltaYB () < 0){
-        var orObs = (3000 - Math.abs(orO));
-    }else if(deltaXB () < 0 && deltaYB () < 0){
-        var orObs = (3000 + Math.abs(orO));
+    if(deltaXB() >= 0 && deltaYB() >= 0){
+        orObs = orO;
+    }else if(deltaXB() >= 0 && deltaYB() < 0){
+        orObs = 3000 - orO;
+    }else if(deltaXB() < 0 && deltaYB() < 0){
+        orObs = 3000 + orO;
     }else {
-        var orObs = (6000 - Math.abs(orO));
+        orObs = 6000 - orO;
     }
-
     document.getElementById("orObs").value = orObs;
     return orObs;
-}  
-function rdirV (){
-    var dirv = Number.parseInt(((Math.atan2(deltaXA (), deltaYA ())) / 0.0174533) / 0.06);
-    return dirv;
 }
+
 function dirV (){
+    var dirv = Number.parseInt(((Math.atan2(Math.abs(deltaXA ()), Math.abs(deltaYA ()))) / 0.0174533) / 0.06);
+    var dV;
+    
     if(deltaXA () > 0 && deltaYA () > 0){
-        var dV = Math.abs(rdirV ());
+        dV = Math.abs(dirv);
     }else if(deltaXA () > 0 && deltaYA () < 0){
-        var dV = (3000 - Math.abs(rdirV ()));
+        dV = (3000 - Math.abs(dirv));
     }else if(deltaXA () < 0 && deltaYA () < 0){
-        var dV = (3000 + Math.abs(rdirV ()));
+        dV = (3000 + Math.abs(dirv));
     }else {
-        var dV = (6000 - Math.abs(rdirV ()));
+        dV = (6000 - Math.abs(dirv));
     }
     document.getElementById("dV").value = dV;
     return dV;
 }
-function direcDr (){
-    var dDr = Number.parseInt(((Math.atan2(deltaXC (), deltaYC ())) / 0.0174533) / 0.06);
-    document.getElementById("dDr").value = dDr;
-    return dDr;
-}
+
 function orDr (){
+    var dDr = Number.parseInt(((Math.atan2(Math.abs(deltaXC ()), Math.abs(deltaYC ()))) / 0.0174533) / 0.06);
+    var oDr;
     if(deltaXC () > 0 && deltaYC () > 0){
-        var oDr = Math.abs(direcDr ());
+        oDr = Math.abs(dDr);
     }else if(deltaXC () > 0 && deltaYC () < 0){
-        var oDr = (3000 - Math.abs(direcDr ()));
+        oDr = (3000 - Math.abs(dDr));
     }else if(deltaXC () < 0 && deltaYC () < 0){
-        var oDr = (3000 + Math.abs(direcDr ()));
+        oDr = (3000 + Math.abs(dDr));
     }else {
-        var oDr = (6000 - Math.abs(direcDr ()));
+        oDr = (6000 - Math.abs(dDr));
     }
+    document.getElementById("oDr").value = oDr;
     return oDr;
-}   
+}
+
 function angVigi (){
     if(orDr () > dirV ()){
-        var angVig = Number.parseInt(direcDr () - dirV ());
+        var angVig = Number.parseInt(orDr () - dirV ());
     }
     else{
-        var angVig = Number.parseInt((6000 + direcDr ()) - dirV ());
+        var angVig = Number.parseInt((6000 + orDr ()) - dirV ());
     }
     document.getElementById("angVig").value = angVig;
     return angVig;
 }
 function sitioPvCb (){
-    
-    var sitio = Number.parseInt(deltaZ () / (alcancePvCb () / 1000));
+    var sitio = Number.parseFloat(deltaZ () / (alcancePvCb () / 1000)).toFixed(2);
     document.getElementById("sitio").value = sitio;
+    document.getElementById("sitioIni").value = sitio;
 }
 function alzaCb (){
 
@@ -219,6 +210,12 @@ function alzaCb (){
     document.getElementById("alza").value = alza;
     return alza;
 }
+function alzaInni(){
+    var alzaIni = Number.parseFloat(alzaCb () + corrAlc ()).toFixed(2);
+    document.getElementById("alzaIni").value = alzaIni;
+    return alzaIni;
+}
+/*---------------------------------------------------------------------------------------------------------------------------------*/
 function altMaxCB (){
 
     if(alcancePvCb () >=6000 && alcancePvCb () <8000){
@@ -293,12 +290,13 @@ function velVientoAMEA (){
 }
 function AngVient (){
     var orV = Number(document.getElementById("orV").value);
+    var orVM = Number(orV / 0.06);
 
-    if(dirV () > orV){
-        var angViento = dirV () - orV;
+    if(dirV () > orVM){
+        var angViento = dirV () - orVM;
     }
     else{
-        var angViento = (6000 + dirV ()) - orV;
+        var angViento = (6000 + dirV ()) - orVM;
     }
     document.getElementById("angViento").value = angViento; 
     return angViento;
@@ -476,4 +474,266 @@ function corrAlc (){
     var correcAlc = Number.parseFloat(a1 + a2).toFixed(2);
     document.getElementById("correcAlc").value = correcAlc;
     return correcAlc;
+}
+function alzaIni(){
+    var alzaIni = Number.parseFloat(Number(alzaCb ()) + Number(corrAlc ())).toFixed(2);
+    document.getElementById("alzaIni").value = alzaIni;
+    return alzaIni;
+}
+function orIni(){
+    var orIni = Number.parseFloat(Number(4604) + Number(corrOR ())).toFixed(2);
+    document.getElementById("orientIni").value = orIni;
+    return orIni;
+}
+/*----------------------------------------------------------------------------------------------------------*/
+function alargarY (){
+    var orO = Number.parseFloat(Math.atan2(Math.abs(deltaXB ()), Math.abs(deltaYB ())));
+    var alargar = Number(document.getElementById("alargar").value);
+    var y1;
+    if(deltaXB() >= 0 && deltaYB() >= 0){
+        y1 = (Math.abs(Math. sin(orO))) * alargar;
+    }else {
+        y1 = (Math.abs(Math. cos(orO))) * alargar;
+    }
+    return y1;
+}
+
+function acortarY (){
+    var orO = Number.parseFloat(Math.atan2(Math.abs(deltaXB ()), Math.abs(deltaYB ())));
+    var acortar = Number(document.getElementById("acortar").value);
+    var y2;
+    if(deltaXB() >= 0 && deltaYB() >= 0){
+        y2 = (Math.abs(Math. sin(orO))) * (acortar * -1);
+    }else {
+        y2 = (Math.abs(Math. cos(orO))) * (acortar * -1);
+    }
+    return y2;
+}
+function derechaY (){
+    var orO = Number.parseFloat(Math.atan2(Math.abs(deltaXB ()), Math.abs(deltaYB ())));
+    var derecha = Number(document.getElementById("derecha").value);
+    var y3;
+    if(deltaXB() >= 0 && deltaYB() >= 0){
+        y3 = (Math.abs(Math. cos(orO))) * (derecha * -1);
+    }else {
+        y3 = (Math.abs(Math. sin(orO))) * derecha;
+    }
+    return y3;
+}
+function izquierdaY (){
+    var orO = Number.parseFloat(Math.atan2(Math.abs(deltaXB ()), Math.abs(deltaYB ())));
+    var izquierda = Number(document.getElementById("izquierda").value);
+    var y4;
+    if(deltaXB() >= 0 && deltaYB() >= 0){
+        y4 = (Math.abs(Math. cos(orO))) * izquierda;
+    }else {
+        y4 = (Math.abs(Math. sin(orO))) * (izquierda * -1);
+    }
+    return y4;
+}
+
+function yPrima (){
+    var yPrima = Number.parseInt(alargarY () + acortarY () + derechaY () + izquierdaY ());
+    return yPrima;
+}
+
+/*-------------------------------------------------------------------------------------------------*/
+function alargarX (){
+    var orO = Number.parseFloat(Math.atan2(Math.abs(deltaXB ()), Math.abs(deltaYB ())));
+    var alargar = Number(document.getElementById("alargar").value);
+    var x1;
+    if(deltaXB() >= 0 && deltaYB() >= 0){
+        x1 = (Math.abs(Math. cos(orO))) * alargar;
+    }else {
+        x1 = (Math.abs(Math. sin(orO))) * (alargar * -1);
+    }
+    return x1;
+}
+
+function acortarX (){
+    var orO = Number.parseFloat(Math.atan2(Math.abs(deltaXB ()), Math.abs(deltaYB ())));
+    var acortar = Number(document.getElementById("acortar").value);
+    var x2;
+    if(deltaXB() >= 0 && deltaYB() >= 0){
+        x2 = (Math.abs(Math. cos(orO))) * (acortar * -1);
+    }else {
+        x2 = (Math.abs(Math. sin(orO))) * acortar;
+    }
+    return x2;
+}
+function derechaX (){
+    var orO = Number.parseFloat(Math.atan2(Math.abs(deltaXB ()), Math.abs(deltaYB ())));
+    var derecha = Number(document.getElementById("derecha").value);
+    var x3;
+    if(deltaXB() >= 0 && deltaYB() >= 0){
+        x3 = (Math.abs(Math. sin(orO))) * (derecha * -1);
+    }else {
+        x3 = (Math.abs(Math. cos(orO))) * derecha;
+    }
+    return x3;
+}
+function izquierdaX (){
+    var orO = Number.parseFloat(Math.atan2(Math.abs(deltaXB ()), Math.abs(deltaYB ())));
+    var izquierda = Number(document.getElementById("izquierda").value);
+    var x4;
+    if(deltaXB() >= 0 && deltaYB() >= 0){
+        x4 = (Math.abs(Math. sin(orO))) * izquierda;
+    }else {
+        x4 = (Math.abs(Math. cos(orO))) * (izquierda * -1);
+    }
+    return x4;
+}
+
+function xPrima (){
+    var xPrima = Number.parseInt(alargarX () + acortarX () + derechaX () + izquierdaX ());
+    return xPrima;
+}
+
+function deltaXAPri (){
+    var xcb = Number(document.getElementById("xcb").value);
+    var xpv = Number(document.getElementById("xpv").value);
+    var xpri = Number.parseInt(xpv + xPrima ());
+    var deltaXAPri = Number.parseInt(xpri - xcb)
+    return deltaXAPri;
+}
+function deltaYAPri (){
+    var ycb = Number(document.getElementById("ycb").value);
+    var ypv = Number(document.getElementById("ypv").value);
+    var ypri = Number.parseInt(ypv + yPrima ());
+    var deltaYAPri = Number.parseInt(ypri - ycb)
+    return deltaYAPri;
+}
+function alcancePvCbPri (){
+    var alcance = Math.hypot(deltaXAPri (), deltaYAPri ()).toFixed(2);
+    document.getElementById("alcance").value = alcance; 
+    return alcance;
+}  
+function sitioPvCbPri (){
+    var sitio = Number.parseFloat(deltaZ () / (alcancePvCbPri () / 1000)).toFixed(2);
+    document.getElementById("sitio").value = sitio;
+    document.getElementById("sitioIni").value =  sitio;
+}
+function alzaCbPri (){
+
+    if(alcancePvCbPri () >=6000 && alcancePvCbPri () <7000){
+    var alza = Number.parseFloat((0.01728571428094 * alcancePvCbPri ()) + (40.14)).toFixed(2);
+        }
+    else if(alcancePvCbPri () >=7000 && alcancePvCbPri () <8000){
+        var alza = Number.parseFloat((0.01999999999602 * alcancePvCbPri ()) + (21)).toFixed(2);
+        }
+    else if(alcancePvCbPri () >=8000 && alcancePvCbPri () <9000){
+        var alza = Number.parseFloat((0.02114285714286 * alcancePvCbPri ()) + (11.619)).toFixed(2);
+        }
+    else if(alcancePvCbPri () >=9000 && alcancePvCbPri () <10000){
+        var alza = Number.parseFloat((0.02371428571429 * alcancePvCbPri ()) - (11.2857)).toFixed(2);
+        }
+    else if(alcancePvCbPri () >=10000 && alcancePvCbPri () <11000){
+        var alza = Number.parseFloat((0.027000000000 * alcancePvCbPri ()) - (44.333)).toFixed(2);
+        }
+    else if(alcancePvCbPri () >=11000 && alcancePvCbPri () <12000){
+        var alza = Number.parseFloat((0.03071428571429 * alcancePvCbPri ()) - (85.0476)).toFixed(2);
+        }
+    else if(alcancePvCbPri () >=12000 && alcancePvCbPri () <13000){
+        var alza = Number.parseFloat((0.03428571428571 * alcancePvCbPri ()) - (127.900)).toFixed(2);
+        }  
+    else if(alcancePvCbPri () >=13000 && alcancePvCbPri () <14000){
+        var alza = Number.parseFloat((0.03814285714286 * alcancePvCbPri ()) - (178.42)).toFixed(2);
+        }   
+    else if(alcancePvCbPri () >=14000 && alcancePvCbPri () <15000){
+        var alza = Number.parseFloat((0.04200000000000 * alcancePvCbPri ()) - (232.33)).toFixed(2);
+        }  
+    else if(alcancePvCbPri () >=15000 && alcancePvCbPri () <15500){
+        var alza = Number.parseFloat((0.04737288135593 * alcancePvCbPri ()) - (312.74576)).toFixed(2);
+        }  
+    else if(alcancePvCbPri () >=15500 && alcancePvCbPri () <16000){
+        var alza = Number.parseFloat((0.04923728813559 * alcancePvCbPri ()) - (341.881)).toFixed(2);
+        } 
+    else if(alcancePvCbPri () >=16000 && alcancePvCbPri () <16500){
+        var alza = Number.parseFloat((0.05000000000000 * alcancePvCbPri ()) - (354)).toFixed(2);
+        } 
+    else if(alcancePvCbPri () >=16500 && alcancePvCbPri () <17000){
+        var alza = Number.parseFloat((0.05610169491525 * alcancePvCbPri ()) - (455.050)).toFixed(2);
+        } 
+    else if(alcancePvCbPri () >=17000 && alcancePvCbPri () <17500){
+        var alza = Number.parseFloat((0.05813559322034 * alcancePvCbPri ()) - (489.543)).toFixed(2);
+        } 
+    else if(alcancePvCbPri () >=17500 && alcancePvCbPri () <18000){
+        var alza = Number.parseFloat((0.06423728813559 * alcancePvCbPri ()) - (596.3559)).toFixed(2);
+        } 
+    else if(alcancePvCbPri () >=18000 && alcancePvCbPri () <18200){
+        var alza = Number.parseFloat((0.07000000000000 * alcancePvCbPri ()) - (700.0)).toFixed(2);
+        } 
+    else if(alcancePvCbPri () >=18200 && alcancePvCbPri () <18400){
+        var alza = Number.parseFloat((0.07000000000000 * alcancePvCbPri ()) - (700.0)).toFixed(2);
+        } 
+    else if(alcancePvCbPri () >=18400 && alcancePvCbPri () <18600){
+        var alza = Number.parseFloat((0.07500000000000 * alcancePvCbPri ()) - (792.0)).toFixed(2);
+        } 
+    else if(alcancePvCbPri () >=18600 && alcancePvCbPri () <18800){
+        var alza = Number.parseFloat((0.08000000000000 * alcancePvCbPri ()) - (885.0)).toFixed(2);
+        } 
+    else if(alcancePvCbPri () >=18800 && alcancePvCbPri () <19000){
+        var alza = Number.parseFloat((0.09000000000000 * alcancePvCbPri ()) - (1073.0)).toFixed(2);
+        } 
+    else if(alcancePvCbPri () >=19000 && alcancePvCbPri () <19200){
+        var alza = Number.parseFloat((0.09000000000000 * alcancePvCbPri ()) - (1073.0)).toFixed(2);
+        } 
+    else if(alcancePvCbPri () >=19200 && alcancePvCbPri () <19400){
+        var alza = Number.parseFloat((0.10500000000000 * alcancePvCbPri ()) - (1361.0)).toFixed(2);
+        } 
+    else if(alcancePvCbPri () >=19400 && alcancePvCbPri () <19600){
+        var alza = Number.parseFloat((0.11000000000000 * alcancePvCbPri ()) - (1548.0)).toFixed(2);
+        } 
+    else if(alcancePvCbPri () >=19600 && alcancePvCbPri () <19800){
+        var alza = Number.parseFloat((0.14000000000000 * alcancePvCbPri ()) - (2046.0)).toFixed(2);
+        } 
+    else if(alcancePvCbPri () >=19800 && alcancePvCbPri () <20000){
+        var alza = Number.parseFloat((0.18500000000000 * alcancePvCbPri ()) - (2937.0)).toFixed(2);
+        } 
+    else if(alcancePvCbPri () >=20000 && alcancePvCbPri () <20127){
+        var alza = Number.parseFloat((0.5511811023622 * alcancePvCbPri ()) - (10260.0)).toFixed(2);
+        }
+    else{
+        var alza = null;
+        }
+    return alza;
+}
+/*-------------------------------------------------------------------------------------------------------------------------------------*/
+function alzaIniC(){
+    var alzaIniC = Number.parseFloat(Number(alzaCbPri ()) + Number(corrAlc ())).toFixed(2);
+    document.getElementById("alzaIni").value = alzaIniC;
+    return alzaIniC;
+}
+
+function dirVPri (){
+    var dirv = Number.parseInt(((Math.atan2(Math.abs(deltaXAPri ()), Math.abs(deltaYAPri ()))) / 0.0174533) / 0.06);
+    var dVP;
+    
+    if(deltaXAPri () > 0 && deltaYAPri () > 0){
+        dVP = Math.abs(dirv);
+    }else if(deltaXAPri () > 0 && deltaYAPri () < 0){
+        dVP = (3000 - Math.abs(dirv));
+    }else if(deltaXAPri () < 0 && deltaYAPri () < 0){
+        dVP = (3000 + Math.abs(dirv));
+    }else {
+        dVP = (6000 - Math.abs(dirv));
+    }
+    
+    return dVP;
+}
+function difDV (){
+    var difDV = Number.parseInt(dirV () - dirVPri ());
+    return difDV;
+}
+function orIniP(){
+   /* var orIniP = Number.parseFloat(Number(4604) + Number(corrOR ()) + Number(difDV ())).toFixed(2);
+    document.getElementById("orientIni").value = orIniP;
+    return orIniP;*/
+    if(deltaXB() >= 0 && deltaYB() >= 0){
+        var orIniP = Number.parseFloat(Number(4604) + Number(corrOR ()) + Number(difDV ())).toFixed(2);
+    }else {
+        var orIniP = Number.parseFloat(Number(4604) + Number(corrOR ()) - Number(difDV ())).toFixed(2);
+    }
+    document.getElementById("orientIni").value = orIniP;
+    return orIniP;
 }
