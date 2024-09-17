@@ -170,54 +170,56 @@
             </section>
      </div>
      
-        <div class="container">
-            <section id="correcionOBS">
-                <h2 class="titulo">Correciiones Observador</h2> 
+        <div class="container correcion">
+            <div>
+                <section id="correcionOBS">
+                    <h2 class="titulo">Correciiones Observador</h2> 
 
-                <div class="puntos subcajas">
+                    <div class="puntos subcajas">
+                        <span>
+                            <label>Alargar.:</label>
+                        <input class="coordenada" type="number" id="alargar"> 
+                        </span>
+                        
                     <span>
-                        <label>Alargar.:</label>
-                    <input class="coordenada" type="number" id="alargar"> 
+                        <label>Acortar:</label>
+                        <input class="coordenada" type="number" id="acortar">
                     </span>
-                    
-                <span>
-                    <label>Acortar:</label>
-                    <input class="coordenada" type="number" id="acortar">
-                </span>
-                    
-                <span>
-                    <label>Derecha:</label>
-                    <input class="coordenada" type="number" id="derecha">
-                </span>
-                    
-                <span>
-                    <label>Izquierda:</label>
-                    <input class="coordenada" type="number" id="izquierda">
-                </span>
-                </div>
-            </section>
-            <input type="button" name="correc" value="Corrección" id="btnCorrec" onclick="alargarY (), acortarY (), derechaY (), izquierdaY (), yPrima (),alargarX (),acortarX (), derechaX (), izquierdaX (), xPrima (), deltaXAPri (), deltaYAPri (), alcancePvCbPri (), sitioPvCbPri (), alzaCbPri (), alzaIniC (), dirVPri (), difDV (), orIniP()">
-            <section id="datosIniciales">
-                <h2 class="titulo">datos Iniciales</h2> 
-
-                <div class="puntos subcajas">
+                        
                     <span>
-                        <label>Orientación.:</label>
-                    <input type="number" id="orientIni"> 
+                        <label>Derecha:</label>
+                        <input class="coordenada" type="number" id="derecha">
                     </span>
-                    
-                <span>
-                    <label>Sitio:</label>
-                    <input type="number" id="sitioIni">
-                </span>
-                    
-                <span>
-                    <label>alza:</label>
-                    <input type="number" id="alzaIni">
-                </span>
+                        
+                    <span>
+                        <label>Izquierda:</label>
+                        <input class="coordenada" type="number" id="izquierda">
+                    </span>
+                    </div>
+                </section>
+                <section id="datosIniciales">
+                    <h2 class="titulo">Datos Iniciales</h2> 
 
-                </div>
-            </section> 
+                    <div class="puntos subcajas">
+                        <span>
+                            <label>Orientación.:</label>
+                        <input type="number" id="orientIni"> 
+                        </span>
+                        
+                    <span>
+                        <label>Sitio:</label>
+                        <input type="number" id="sitioIni">
+                    </span>
+                        
+                    <span>
+                        <label>alza:</label>
+                        <input type="number" id="alzaIni">
+                    </span>
+
+                    </div>
+                </section>
+            </div>
+            <input type="button" name="correc" value="Corrección" id="btnCorrec" onclick="alargarY (), acortarY (), derechaY (), izquierdaY (), yPrima (),alargarX (),acortarX (), derechaX (), izquierdaX (), xPrima (), deltaXAPri (), deltaYAPri (), alcancePvCbPri (), sitioPvCbPri (), alzaCbPri (), alzaIniC (), dirVPri (), difDV (), orIniP()"> 
         </div>
     </div>    
             </div>
