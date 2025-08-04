@@ -44,22 +44,47 @@ function alcancePvPo (){
     document.getElementById("alcPvPo").value = alcPvPo;
 }  
 
-function cuadrante (){
+function cuadrante() {
+  const dx = deltaXA();
+  const dy = deltaYA();
+  let cuadrante;
 
-    if(deltaXA () > 0 && deltaYA () > 0){
-        var cuadrante = 1;
-    }else if(deltaXA () > 0 && deltaYA () < 0){
-        var cuadrante = 2;
-    }else if(deltaXA () < 0 && deltaYA () < 0){
-        var cuadrante = 3;
-    }else {
-        var cuadrante = 4;
-        }
-    document.getElementById("cuadrante").value = cuadrante;
-    return cuadrante;
-}  
+  if (dx > 0 && dy > 0) {
+    cuadrante = 1;
+  } else if (dx > 0 && dy < 0) {
+    cuadrante = 2;
+  } else if (dx < 0 && dy < 0) {
+    cuadrante = 3;
+  } else {
+    cuadrante = 4;
+  }
 
-function orientObs (){
+  document.getElementById("cuadrante").value = cuadrante;
+  return cuadrante;
+}
+
+function orientObs() {
+  const dx = deltaXB();
+  const dy = deltaYB();
+  
+  const baseAngle = Math.atan2(Math.abs(dx), Math.abs(dy));
+  const orO = Math.floor((baseAngle * (180 / Math.PI)) / 0.06); // convierte a milésimas
+
+  let orObs;
+  if (dx >= 0 && dy >= 0) {
+    orObs = orO;
+  } else if (dx >= 0 && dy < 0) {
+    orObs = 3000 - orO;
+  } else if (dx < 0 && dy < 0) {
+    orObs = 3000 + orO;
+  } else {
+    orObs = 6000 - orO;
+  }
+
+  document.getElementById("orObs").value = orObs;
+  return orObs;
+}
+/*function orientObs (){
     var orO = Number.parseInt(((Math.atan2(Math.abs(deltaXB ()), Math.abs(deltaYB ()))) / 0.0174533) / 0.06);
     var orObs;
 
@@ -75,7 +100,7 @@ function orientObs (){
     document.getElementById("orObs").value = orObs;
     return orObs;
 }
-
+*/
 function dirV (){
     var dirv = Number.parseInt(((Math.atan2(Math.abs(deltaXA ()), Math.abs(deltaYA ()))) / 0.0174533) / 0.06);
     var dV;
