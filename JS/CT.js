@@ -485,12 +485,12 @@ function orIni(){
     document.getElementById("orientIni").value = orIni;
     return orIni;
 }
-/*----------------------------------------------------------------------------------------------------------*/
+/*
 function alargarY (){
-    var orO = Number.parseFloat(Math.atan2(Math.abs(deltaXB ()), Math.abs(deltaYB ())));
+    var orO = Number.parseFloat(Math.atan2((deltaXB ()), (deltaYB ())));
     var alargar = Number(document.getElementById("alargar").value);
     var y1;
-    if(deltaXB() >= 0 && deltaYB() >= 0){
+    if(orO >= 0){
         y1 = (Math. sin(orO)) * alargar;
     }else {
         y1 = (Math. cos(orO)) * alargar;
@@ -499,35 +499,35 @@ function alargarY (){
 }
 
 function acortarY (){
-    var orO = Number.parseFloat(Math.atan2(Math.abs(deltaXB ()), Math.abs(deltaYB ())));
+    var orO = Number.parseFloat(Math.atan2((deltaXB ()), (deltaYB ())));
     var acortar = Number(document.getElementById("acortar").value);
     var y2;
-    if(deltaXB() >= 0 && deltaYB() >= 0){
-        y2 = (Math. sin(orO)) * (acortar * -1);
+    if(orO >= 0){
+        y2 = (Math. cos(orO)) * (acortar * (-1));
     }else {
-        y2 = (Math. cos(orO)) * (acortar * -1);
+        y2 = (Math. sin(orO)) * (acortar * (-1));
     }
     return y2;
 }
 function derechaY (){
-    var orO = Number.parseFloat(Math.atan2(Math.abs(deltaXB ()), Math.abs(deltaYB ())));
+    var orO = Number.parseFloat(Math.atan2((deltaXB ()), (deltaYB ())));
     var derecha = Number(document.getElementById("derecha").value);
     var y3;
-    if(deltaXB() >= 0 && deltaYB() >= 0){
-        y3 = (Math. cos(orO)) * (derecha * -1);
+    if(orO >= 0){
+        y3 = (Math. sin(orO)) * (derecha * (-1));
     }else {
-        y3 = (Math. sin(orO)) * derecha;
+        y3 = (Math. cos(orO)) * derecha;
     }
     return y3;
 }
 function izquierdaY (){
-    var orO = Number.parseFloat(Math.atan2(Math.abs(deltaXB ()), Math.abs(deltaYB ())));
+    var orO = Number.parseFloat(Math.atan2((deltaXB ()), (deltaYB ())));
     var izquierda = Number(document.getElementById("izquierda").value);
     var y4;
-    if(deltaXB() >= 0 && deltaYB() >= 0){
-        y4 = (Math. cos(orO)) * izquierda;
+    if(orO >= 0){
+        y4 = (Math. sin(orO)) * izquierda;
     }else {
-        y4 = (Math. sin(orO)) * (izquierda * -1);
+        y4 = (Math. cos(orO)) * (izquierda * (-1));
     }
     return y4;
 }
@@ -537,62 +537,118 @@ function yPrima (){
     return yPrima;
 }
 
-/*-------------------------------------------------------------------------------------------------*/
+/*-
 function alargarX (){
-    var orO = Number.parseFloat(Math.atan2(Math.abs(deltaXB ()), Math.abs(deltaYB ())));
+    var orO = Number.parseFloat(Math.atan2((deltaXB ()),(deltaYB ())));
     var alargar = Number(document.getElementById("alargar").value);
     var x1;
-    if(deltaXB() >= 0 && deltaYB() >= 0){
-        x1 = (Math. cos(orO)) * alargar;
+    if(orO >= 0){
+        x1 = (Math. sin(orO)) * alargar;
     }else {
-        x1 = (Math. sin(orO)) * (alargar * -1);
+        x1 = (Math. cos(orO)) * (alargar * (-1));
     }
     return x1;
 }
 
 function acortarX (){
-    var orO = Number.parseFloat(Math.atan2(Math.abs(deltaXB ()), Math.abs(deltaYB ())));
+    var orO = Number.parseFloat(Math.atan2((deltaXB ()), (deltaYB ())));
     var acortar = Number(document.getElementById("acortar").value);
     var x2;
-    if(deltaXB() >= 0 && deltaYB() >= 0){
-        x2 = (Math. cos(orO)) * (acortar * -1);
+    if(orO >= 0){
+        x2 = (Math. sin(orO)) * (acortar * (-1));
     }else {
-        x2 = (Math. sin(orO)) * acortar;
+        x2 = (Math. cos(orO)) * acortar;
     }
     return x2;
 }
 function derechaX (){
-    var orO = Number.parseFloat(Math.atan2(Math.abs(deltaXB ()), Math.abs(deltaYB ())));
+    var orO = Number.parseFloat(Math.atan2((deltaXB ()), (deltaYB ())));
     var derecha = Number(document.getElementById("derecha").value);
     var x3;
-    if(deltaXB() >= 0 && deltaYB() >= 0){
-        x3 = (Math. sin(orO)) * (derecha * -1);
-    }else {
+    if(orO >= 0){
         x3 = (Math. cos(orO)) * derecha;
+    }else {
+        x3 = (Math. sin(orO)) * derecha;
     }
     return x3;
 }
 function izquierdaX (){
-    var orO = Number.parseFloat(Math.atan2(Math.abs(deltaXB ()), Math.abs(deltaYB ())));
+    var orO = Number.parseFloat(Math.atan2((deltaXB ()), (deltaYB ())));
     var izquierda = Number(document.getElementById("izquierda").value);
     var x4;
-    if(deltaXB() >= 0 && deltaYB() >= 0){
-        x4 = (Math. sin(orO)) * izquierda;
+    if(orO >= 0){
+        x4 = (Math. sin(orO)) * (izquierda * (-1));
     }else {
-        x4 = (Math. cos(orO)) * (izquierda * -1);
+        x4 = (Math. cos(orO)) * (izquierda * (-1));
     }
-    return x4;
+    return x4;       
 }
 
 function xPrima (){
     var xPrima = Number.parseInt(alargarX () + acortarX () + derechaX () + izquierdaX ());
     return xPrima;
 }
+*/
+function calcularComponentes(valor) {
+  const dx = deltaXB();
+  const dy = deltaYB();
+  const angulo = Math.atan2(dy, dx); // dirección del vector desde el origen
 
-function deltaXAPri (){
+  return {
+    x: Math.cos(angulo) * valor,
+    y: Math.sin(angulo) * valor
+  };
+}
+
+function calcularXY() {
+  const alargar = Number(document.getElementById("alargar").value);
+  const acortar = Number(document.getElementById("acortar").value);
+  const derecha = Number(document.getElementById("derecha").value);
+  const izquierda = Number(document.getElementById("izquierda").value);
+
+  // componentes individuales
+  const compAlargar = calcularComponentes(alargar);
+  const compAcortar = calcularComponentes(-acortar); // sentido opuesto
+  const compDerecha = calcularComponentes(derecha);
+  const compIzquierda = calcularComponentes(-izquierda); // sentido opuesto
+
+  // suma total
+  const xPrima = Math.round(
+    compAlargar.x + compAcortar.x + compDerecha.x + compIzquierda.x
+  );
+  const yPrima = Math.round(
+    compAlargar.y + compAcortar.y + compDerecha.y + compIzquierda.y
+  );
+
+  return { xPrima, yPrima };
+}
+function deltaXAPri() {
+  const { xPrima } = calcularXY(); 
+  const xcb = Number(document.getElementById("xcb").value);
+  const xpv = Number(document.getElementById("xpv").value);
+  const xpri = xpv + xPrima;
+  return xpri - xcb;
+}
+
+function deltaYAPri() {
+  const { yPrima } = calcularXY();
+  const ycb = Number(document.getElementById("ycb").value);
+  const ypv = Number(document.getElementById("ypv").value);
+  const ypri = ypv + yPrima;
+  return ypri - ycb;
+}
+function alcancePvCbPri() {
+  const dx = deltaXAPri();
+  const dy = deltaYAPri();
+  const alcance = Math.hypot(dx, dy).toFixed(2);
+
+  document.getElementById("alcance").value = alcance;
+  return alcance;
+}
+/*function deltaXAPri (){
     var xcb = Number(document.getElementById("xcb").value);
     var xpv = Number(document.getElementById("xpv").value);
-    var xpri = Number.parseInt(xpv + xPrima ());
+    var xpri = Number.parseInt(xpv + xPrima);
     var deltaXAPri = Number.parseInt(xpri - xcb)
     return deltaXAPri;
 }
@@ -608,6 +664,7 @@ function alcancePvCbPri (){
     document.getElementById("alcance").value = alcance; 
     return alcance;
 }  
+    */
 function sitioPvCbPri (){
     var sitio = Number.parseFloat(deltaZ () / (alcancePvCbPri () / 1000)).toFixed(2);
     document.getElementById("sitio").value = sitio;
@@ -726,9 +783,6 @@ function difDV (){
     return difDV;
 }
 function orIniP(){
-   /* var orIniP = Number.parseFloat(Number(4604) + Number(corrOR ()) + Number(difDV ())).toFixed(2);
-    document.getElementById("orientIni").value = orIniP;
-    return orIniP;*/
     if(deltaXB() >= 0 && deltaYB() >= 0){
         var orIniP = Number.parseFloat(Number(4604) + Number(corrOR ()) + Number(difDV ())).toFixed(2);
     }else {
