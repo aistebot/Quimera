@@ -66,7 +66,7 @@ function cuadrante() {
 function orientObs() {
   const dx = deltaXB();
   const dy = deltaYB();
-  
+
   const baseAngle = Math.atan2(Math.abs(dx), Math.abs(dy));
   const orO = Math.floor((baseAngle * (180 / Math.PI)) / 0.06); // convierte a milésimas
 
@@ -84,291 +84,249 @@ function orientObs() {
   document.getElementById("orObs").value = orObs;
   return orObs;
 }
-/*function orientObs (){
-    var orO = Number.parseInt(((Math.atan2(Math.abs(deltaXB ()), Math.abs(deltaYB ()))) / 0.0174533) / 0.06);
-    var orObs;
+function dirV() {
+  const dx = deltaXA();
+  const dy = deltaYA();
 
-    if(deltaXB() >= 0 && deltaYB() >= 0){
-        orObs = orO;
-    }else if(deltaXB() >= 0 && deltaYB() < 0){
-        orObs = 3000 - orO;
-    }else if(deltaXB() < 0 && deltaYB() < 0){
-        orObs = 3000 + orO;
-    }else {
-        orObs = 6000 - orO;
-    }
-    document.getElementById("orObs").value = orObs;
-    return orObs;
-}
-*/
-function dirV (){
-    var dirv = Number.parseInt(((Math.atan2(Math.abs(deltaXA ()), Math.abs(deltaYA ()))) / 0.0174533) / 0.06);
-    var dV;
-    
-    if(deltaXA () > 0 && deltaYA () > 0){
-        dV = Math.abs(dirv);
-    }else if(deltaXA () > 0 && deltaYA () < 0){
-        dV = (3000 - Math.abs(dirv));
-    }else if(deltaXA () < 0 && deltaYA () < 0){
-        dV = (3000 + Math.abs(dirv));
-    }else {
-        dV = (6000 - Math.abs(dirv));
-    }
-    document.getElementById("dV").value = dV;
-    return dV;
-}
+  const baseAngle = Math.atan2(Math.abs(dx), Math.abs(dy));
+  const dirv = Math.floor((baseAngle * (180 / Math.PI)) / 0.06); 
 
-function orDr (){
-    var dDr = Number.parseInt(((Math.atan2(Math.abs(deltaXC ()), Math.abs(deltaYC ()))) / 0.0174533) / 0.06);
-    var oDr;
-    if(deltaXC () > 0 && deltaYC () > 0){
-        oDr = Math.abs(dDr);
-    }else if(deltaXC () > 0 && deltaYC () < 0){
-        oDr = (3000 - Math.abs(dDr));
-    }else if(deltaXC () < 0 && deltaYC () < 0){
-        oDr = (3000 + Math.abs(dDr));
-    }else {
-        oDr = (6000 - Math.abs(dDr));
-    }
-    document.getElementById("oDr").value = oDr;
-    return oDr;
-}
+  let dV;
+  if (dx > 0 && dy > 0) {
+    dV = dirv;
+  } else if (dx > 0 && dy < 0) {
+    dV = 3000 - dirv;
+  } else if (dx < 0 && dy < 0) {
+    dV = 3000 + dirv;
+  } else {
+    dV = 6000 - dirv;
+  }
 
-function angVigi (){
-    if(orDr () > dirV ()){
-        var angVig = Number.parseInt(orDr () - dirV ());
-    }
-    else{
-        var angVig = Number.parseInt((6000 + orDr ()) - dirV ());
-    }
-    document.getElementById("angVig").value = angVig;
-    return angVig;
+  document.getElementById("dV").value = dV;
+  return dV;
 }
-function sitioPvCb (){
-    var sitio = Number.parseFloat(deltaZ () / (alcancePvCb () / 1000)).toFixed(2);
-    document.getElementById("sitio").value = sitio;
-    document.getElementById("sitioIni").value = sitio;
-}
-function alzaCb (){
+function orDr() {
+  const dx = deltaXC();
+  const dy = deltaYC();
 
-    if(alcancePvCb () >=6000 && alcancePvCb () <7000){
-    var alza = Number.parseFloat((0.01728571428094 * alcancePvCb ()) + (40.14)).toFixed(2);
-        }
-    else if(alcancePvCb () >=7000 && alcancePvCb () <8000){
-        var alza = Number.parseFloat((0.01999999999602 * alcancePvCb ()) + (21)).toFixed(2);
-        }
-    else if(alcancePvCb () >=8000 && alcancePvCb () <9000){
-        var alza = Number.parseFloat((0.02114285714286 * alcancePvCb ()) + (11.619)).toFixed(2);
-        }
-    else if(alcancePvCb () >=9000 && alcancePvCb () <10000){
-        var alza = Number.parseFloat((0.02371428571429 * alcancePvCb ()) - (11.2857)).toFixed(2);
-        }
-    else if(alcancePvCb () >=10000 && alcancePvCb () <11000){
-        var alza = Number.parseFloat((0.027000000000 * alcancePvCb ()) - (44.333)).toFixed(2);
-        }
-    else if(alcancePvCb () >=11000 && alcancePvCb () <12000){
-        var alza = Number.parseFloat((0.03071428571429 * alcancePvCb ()) - (85.0476)).toFixed(2);
-        }
-    else if(alcancePvCb () >=12000 && alcancePvCb () <13000){
-        var alza = Number.parseFloat((0.03428571428571 * alcancePvCb ()) - (127.900)).toFixed(2);
-        }  
-    else if(alcancePvCb () >=13000 && alcancePvCb () <14000){
-        var alza = Number.parseFloat((0.03814285714286 * alcancePvCb ()) - (178.42)).toFixed(2);
-        }   
-    else if(alcancePvCb () >=14000 && alcancePvCb () <15000){
-        var alza = Number.parseFloat((0.04200000000000 * alcancePvCb ()) - (232.33)).toFixed(2);
-        }  
-    else if(alcancePvCb () >=15000 && alcancePvCb () <15500){
-        var alza = Number.parseFloat((0.04737288135593 * alcancePvCb ()) - (312.74576)).toFixed(2);
-        }  
-    else if(alcancePvCb () >=15500 && alcancePvCb () <16000){
-        var alza = Number.parseFloat((0.04923728813559 * alcancePvCb ()) - (341.881)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=16000 && alcancePvCb () <16500){
-        var alza = Number.parseFloat((0.05000000000000 * alcancePvCb ()) - (354)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=16500 && alcancePvCb () <17000){
-        var alza = Number.parseFloat((0.05610169491525 * alcancePvCb ()) - (455.050)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=17000 && alcancePvCb () <17500){
-        var alza = Number.parseFloat((0.05813559322034 * alcancePvCb ()) - (489.543)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=17500 && alcancePvCb () <18000){
-        var alza = Number.parseFloat((0.06423728813559 * alcancePvCb ()) - (596.3559)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=18000 && alcancePvCb () <18200){
-        var alza = Number.parseFloat((0.07000000000000 * alcancePvCb ()) - (700.0)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=18200 && alcancePvCb () <18400){
-        var alza = Number.parseFloat((0.07000000000000 * alcancePvCb ()) - (700.0)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=18400 && alcancePvCb () <18600){
-        var alza = Number.parseFloat((0.07500000000000 * alcancePvCb ()) - (792.0)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=18600 && alcancePvCb () <18800){
-        var alza = Number.parseFloat((0.08000000000000 * alcancePvCb ()) - (885.0)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=18800 && alcancePvCb () <19000){
-        var alza = Number.parseFloat((0.09000000000000 * alcancePvCb ()) - (1073.0)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=19000 && alcancePvCb () <19200){
-        var alza = Number.parseFloat((0.09000000000000 * alcancePvCb ()) - (1073.0)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=19200 && alcancePvCb () <19400){
-        var alza = Number.parseFloat((0.10500000000000 * alcancePvCb ()) - (1361.0)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=19400 && alcancePvCb () <19600){
-        var alza = Number.parseFloat((0.11000000000000 * alcancePvCb ()) - (1548.0)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=19600 && alcancePvCb () <19800){
-        var alza = Number.parseFloat((0.14000000000000 * alcancePvCb ()) - (2046.0)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=19800 && alcancePvCb () <20000){
-        var alza = Number.parseFloat((0.18500000000000 * alcancePvCb ()) - (2937.0)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=20000 && alcancePvCb () <20127){
-        var alza = Number.parseFloat((0.5511811023622 * alcancePvCb ()) - (10260.0)).toFixed(2);
-        }
-    else{
-        var alza = null;
-        }
-    document.getElementById("alza").value = alza;
-    return alza;
+  // Ángulo base en milésimas (1 mil = 0.06°)
+  const baseAngle = Math.atan2(Math.abs(dx), Math.abs(dy));
+  const dDr = Math.floor((baseAngle * (180 / Math.PI)) / 0.06); // conversión directa
+
+  let oDr;
+  if (dx > 0 && dy > 0) {
+    oDr = dDr;
+  } else if (dx > 0 && dy < 0) {
+    oDr = 3000 - dDr;
+  } else if (dx < 0 && dy < 0) {
+    oDr = 3000 + dDr;
+  } else {
+    oDr = 6000 - dDr;
+  }
+
+  document.getElementById("oDr").value = oDr;
+  return oDr;
 }
-function alzaInni(){
+function angVigi() {
+  const observacion = orDr(); 
+  const direccion = dirV();   
+
+  let angVig;
+  if (observacion > direccion) {
+    angVig = observacion - direccion;
+  } else {
+    angVig = (6000 + observacion) - direccion;
+  }
+
+  angVig = Math.floor(angVig); 
+  document.getElementById("angVig").value = angVig;
+  return angVig;
+}
+function sitioPvCb() {
+  const dz = deltaZ();                 
+  const alcance = alcancePvCb();      
+  const sitio = (dz / (alcance / 1000)).toFixed(2); 
+
+  document.getElementById("sitio").value = sitio;
+  document.getElementById("sitioIni").value = sitio;
+
+  return sitio;
+}
+function alzaCb() {
+  const alcance = alcancePvCb();
+  let alza = null;
+
+  if (alcance >= 6000 && alcance < 7000) {
+    alza = (0.01728571428094 * alcance + 40.14).toFixed(2);
+  } else if (alcance >= 7000 && alcance < 8000) {
+    alza = (0.01999999999602 * alcance + 21).toFixed(2);
+  } else if (alcance >= 8000 && alcance < 9000) {
+    alza = (0.02114285714286 * alcance + 11.619).toFixed(2);
+  } else if (alcance >= 9000 && alcance < 10000) {
+    alza = (0.02371428571429 * alcance - 11.2857).toFixed(2);
+  } else if (alcance >= 10000 && alcance < 11000) {
+    alza = (0.027 * alcance - 44.333).toFixed(2);
+  } else if (alcance >= 11000 && alcance < 12000) {
+    alza = (0.03071428571429 * alcance - 85.0476).toFixed(2);
+  } else if (alcance >= 12000 && alcance < 13000) {
+    alza = (0.03428571428571 * alcance - 127.9).toFixed(2);
+  } else if (alcance >= 13000 && alcance < 14000) {
+    alza = (0.03814285714286 * alcance - 178.42).toFixed(2);
+  } else if (alcance >= 14000 && alcance < 15000) {
+    alza = (0.042 * alcance - 232.33).toFixed(2);
+  } else if (alcance >= 15000 && alcance < 15500) {
+    alza = (0.04737288135593 * alcance - 312.74576).toFixed(2);
+  } else if (alcance >= 15500 && alcance < 16000) {
+    alza = (0.04923728813559 * alcance - 341.881).toFixed(2);
+  } else if (alcance >= 16000 && alcance < 16500) {
+    alza = (0.05 * alcance - 354).toFixed(2);
+  } else if (alcance >= 16500 && alcance < 17000) {
+    alza = (0.05610169491525 * alcance - 455.05).toFixed(2);
+  } else if (alcance >= 17000 && alcance < 17500) {
+    alza = (0.05813559322034 * alcance - 489.543).toFixed(2);
+  } else if (alcance >= 17500 && alcance < 18000) {
+    alza = (0.06423728813559 * alcance - 596.3559).toFixed(2);
+  } else if (alcance >= 18000 && alcance < 18200) {
+    alza = (0.07 * alcance - 700).toFixed(2);
+  } else if (alcance >= 18200 && alcance < 18400) {
+    alza = (0.07 * alcance - 700).toFixed(2);
+  } else if (alcance >= 18400 && alcance < 18600) {
+    alza = (0.075 * alcance - 792).toFixed(2);
+  } else if (alcance >= 18600 && alcance < 18800) {
+    alza = (0.08 * alcance - 885).toFixed(2);
+  } else if (alcance >= 18800 && alcance < 19000) {
+    alza = (0.09 * alcance - 1073).toFixed(2);
+  } else if (alcance >= 19000 && alcance < 19200) {
+    alza = (0.09 * alcance - 1073).toFixed(2);
+  } else if (alcance >= 19200 && alcance < 19400) {
+    alza = (0.105 * alcance - 1361).toFixed(2);
+  } else if (alcance >= 19400 && alcance < 19600) {
+    alza = (0.11 * alcance - 1548).toFixed(2);
+  } else if (alcance >= 19600 && alcance < 19800) {
+    alza = (0.14 * alcance - 2046).toFixed(2);
+  } else if (alcance >= 19800 && alcance < 20000) {
+    alza = (0.185 * alcance - 2937).toFixed(2);
+  } else if (alcance >= 20000 && alcance < 20127) {
+    alza = (0.5511811023622 * alcance - 10260).toFixed(2);
+  }
+
+  document.getElementById("alza").value = alza;
+  return alza;
+}
+/*function alzaInni(){
     var alzaIni = Number.parseFloat(alzaCb () + corrAlc ()).toFixed(2);
     document.getElementById("alzaIni").value = alzaIni;
     return alzaIni;
-}
+}*/
 /*---------------------------------------------------------------------------------------------------------------------------------*/
-function altMaxCB (){
+function altMaxCB() {
+  const alcance = alcancePvCb();
+  let altMax = null;
 
-    if(alcancePvCb () >=6000 && alcancePvCb () <8000){
-    var altMax = Number.parseFloat((0.01290909090909 * alcancePvCb ()) - (25.90)).toFixed(2);
-    }
-    else if(alcancePvCb () >=8000 && alcancePvCb () <9000){
-        var altMax = Number.parseFloat((0.01571428571429 * alcancePvCb ()) - (47.90)).toFixed(2);
-        }
-    else if(alcancePvCb () >=9000 && alcancePvCb () <10000){
-        var altMax = Number.parseFloat((0.01728571428571 * alcancePvCb ()) - (61.71)).toFixed(2);
-        }
-    else if(alcancePvCb () >=10000 && alcancePvCb () <11000){
-        var altMax = Number.parseFloat((0.01885714285714 * alcancePvCb ()) - (77.66)).toFixed(2);
-        }
-    else if(alcancePvCb () >=11000 && alcancePvCb () <12000){
-        var altMax = Number.parseFloat((0.02071428571429 * alcancePvCb ()) - (98.04)).toFixed(2);
-        }
-    else if(alcancePvCb () >=12000 && alcancePvCb () <13000){
-        var altMax = Number.parseFloat((0.02428571428571 * alcancePvCb ()) - (140.90)).toFixed(2);
-        }
-    else if(alcancePvCb () >=13000 && alcancePvCb () <14000){
-        var altMax = Number.parseFloat((0.02714285714286 * alcancePvCb ()) - (180.43)).toFixed(2);
-        }  
-    else if(alcancePvCb () >=14000 && alcancePvCb () <15000){
-        var altMax = Number.parseFloat((0.02928571428571 * alcancePvCb ()) - (209.48)).toFixed(2);
-        }   
-    else if(alcancePvCb () >=15000 && alcancePvCb () <16000){
-        var altMax = Number.parseFloat((0.03228571428571 * alcancePvCb ()) - (254.43)).toFixed(2);
-        }  
-    else if(alcancePvCb () >=16000 && alcancePvCb () <17000){
-        var altMax = Number.parseFloat((0.03500000000000 * alcancePvCb ()) - (298.00)).toFixed(2);
-        }  
-    else if(alcancePvCb () >=17000 && alcancePvCb () <18000){
-        var altMax = Number.parseFloat((0.03928571428571 * alcancePvCb ()) - (371.33)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=18000 && alcancePvCb () <18500){
-        var altMax = Number.parseFloat((0.04500000000000 * alcancePvCb ()) - (474.00)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=18500 && alcancePvCb () <19000){
-        var altMax = Number.parseFloat((0.04686440677966 * alcancePvCb ()) - (508.66)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=19000 && alcancePvCb () <19200){
-        var altMax = Number.parseFloat((0.05500000000000 * alcancePvCb ()) - (633.00)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=19200 && alcancePvCb () <19400){
-        var altMax = Number.parseFloat((0.06000000000000 * alcancePvCb ()) - (759.00)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=19400 && alcancePvCb () <19600){
-        var altMax = Number.parseFloat((0.07000000000000 * alcancePvCb ()) - (953.00)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=19600 && alcancePvCb () <19800){
-        var altMax = Number.parseFloat((0.08000000000000 * alcancePvCb ()) - (1149.0)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=19800 && alcancePvCb () <20000){
-        var altMax = Number.parseFloat((0.09500000000000 * alcancePvCb ()) - (1446.00)).toFixed(2);
-        } 
-    else if(alcancePvCb () >=20000 && alcancePvCb () <20127){
-        var altMax = Number.parseFloat((0.283464566291 * alcancePvCb ()) - (5215.29)).toFixed(2);
-        } 
-    else{
-        var altMax = null;
-        }
-    document.getElementById("altMax").value = altMax;
-    return altMax;
-}
-function velVientoAMEA (){
-    var velViento = Number(document.getElementById("velViento").value);
+  if (alcance >= 6000 && alcance < 8000) {
+    altMax = 0.01290909090909 * alcance - 25.90;
+  } else if (alcance >= 8000 && alcance < 9000) {
+    altMax = 0.01571428571429 * alcance - 47.90;
+  } else if (alcance >= 9000 && alcance < 10000) {
+    altMax = 0.01728571428571 * alcance - 61.71;
+  } else if (alcance >= 10000 && alcance < 11000) {
+    altMax = 0.01885714285714 * alcance - 77.66;
+  } else if (alcance >= 11000 && alcance < 12000) {
+    altMax = 0.02071428571429 * alcance - 98.04;
+  } else if (alcance >= 12000 && alcance < 13000) {
+    altMax = 0.02428571428571 * alcance - 140.90;
+  } else if (alcance >= 13000 && alcance < 14000) {
+    altMax = 0.02714285714286 * alcance - 180.43;
+  } else if (alcance >= 14000 && alcance < 15000) {
+    altMax = 0.02928571428571 * alcance - 209.48;
+  } else if (alcance >= 15000 && alcance < 16000) {
+    altMax = 0.03228571428571 * alcance - 254.43;
+  } else if (alcance >= 16000 && alcance < 17000) {
+    altMax = 0.035 * alcance - 298.00;
+  } else if (alcance >= 17000 && alcance < 18000) {
+    altMax = 0.03928571428571 * alcance - 371.33;
+  } else if (alcance >= 18000 && alcance < 18500) {
+    altMax = 0.045 * alcance - 474.00;
+  } else if (alcance >= 18500 && alcance < 19000) {
+    altMax = 0.04686440677966 * alcance - 508.66;
+  } else if (alcance >= 19000 && alcance < 19200) {
+    altMax = 0.055 * alcance - 633.00;
+  } else if (alcance >= 19200 && alcance < 19400) {
+    altMax = 0.060 * alcance - 759.00;
+  } else if (alcance >= 19400 && alcance < 19600) {
+    altMax = 0.070 * alcance - 953.00;
+  } else if (alcance >= 19600 && alcance < 19800) {
+    altMax = 0.080 * alcance - 1149.00;
+  } else if (alcance >= 19800 && alcance < 20000) {
+    altMax = 0.095 * alcance - 1446.00;
+  } else if (alcance >= 20000 && alcance < 20127) {
+    altMax = 0.283464566291 * alcance - 5215.29;
+  }
 
-    var vVAltMax = Number.parseFloat((Math.pow((altMaxCB ()/1.7), 0.075)) * velViento).toFixed(2);
-    document.getElementById("vVAltMax").value = vVAltMax; 
-    return vVAltMax;
+  const result = altMax !== null ? altMax.toFixed(2) : null;
+  document.getElementById("altMax").value = result;
+  return result;
 }
-function AngVient (){
-    var orV = Number(document.getElementById("orV").value);
-    var orVM = Number(orV / 0.06);
+function velVientoAMEA() {
+  const velViento = Number(document.getElementById("velViento").value);
+  const altMax = altMaxCB(); 
+  const factor = Math.pow(altMax / 1.7, 0.075);
 
-    if(dirV () > orVM){
-        var angViento = dirV () - orVM;
-    }
-    else{
-        var angViento = (6000 + dirV ()) - orVM;
-    }
-    document.getElementById("angViento").value = angViento; 
-    return angViento;
-} 
-function descX (){
-    if(AngVient () < 1500){
-        var wX = Number.parseFloat((Math.abs((Math.cos(AngVient () * 0.06 * 0.0174533)) * velVientoAMEA ()).toFixed(2)) * (-1));
-    }
-    else if(AngVient () >= 1500 && AngVient () < 3000){
-        var wX = Number.parseFloat(Math.abs((Math.cos(AngVient () * 0.06 * 0.0174533)) * velVientoAMEA ()).toFixed(2));
-    }
-    else if(AngVient () >= 3000 && AngVient () < 4500){
-        var wX = Number.parseFloat(Math.abs((Math.cos(AngVient () * 0.06 * 0.0174533)) * velVientoAMEA ()).toFixed(2));
-    }
-    else{
-        var wX = Number.parseFloat((Math.abs((Math.cos(AngVient () * 0.06 * 0.0174533)) * velVientoAMEA ()).toFixed(2)) * (-1));
-    }
-        document.getElementById("wX").value = wX;
-        return wX;
+  const vVAltMax = (factor * velViento).toFixed(2);
+
+  document.getElementById("vVAltMax").value = vVAltMax;
+  return vVAltMax;
 }
-function descZ (){
-    if(AngVient () < 1500){
-        var wZ = Number.parseFloat(Math.abs((Math.sin(AngVient () * 0.06 * 0.0174533)) * velVientoAMEA ()).toFixed(2));
-    }
-    else if(AngVient () >= 1500 && AngVient () < 3000){
-        var wZ = Number.parseFloat(Math.abs((Math.sin(AngVient () * 0.06 * 0.0174533)) * velVientoAMEA ()).toFixed(2));
-    }
-    else if(AngVient () >= 3000 && AngVient () < 4500){
-        var wZ = Number.parseFloat((Math.abs((Math.sin(AngVient () * 0.06 * 0.0174533)) * velVientoAMEA ()).toFixed(2)) * (-1));
-    }
-    else{
-        var wZ = Number.parseFloat((Math.abs((Math.sin(AngVient () * 0.06 * 0.0174533)) * velVientoAMEA ()).toFixed(2)) * (-1));
-    }
-        document.getElementById("wZ").value = wZ;
-        return wZ;
-}  
-function colK (){
-    if( alcancePvCb () < 8000){
-        var k = (-0.1);
-    }
-    else if (alcancePvCb () >= 8000 && alcancePvCb () < 10000){
-        var k = (-.02);
-    }
-    else{
-        var k = (-0.3);
-    }
-    return k;
+function AngVient() {
+  const orV = Number(document.getElementById("orV").value);
+  const dirViento = dirV();
+  const modulo = 6000;
+  const orVM = orV / 0.06;
+
+  let angViento = dirViento >= orVM
+    ? dirViento - orVM
+    : modulo + dirViento - orVM;
+
+  document.getElementById("angViento").value = angViento;
+  return angViento;
+}
+function descX() {
+  const ang = AngVient();
+  const viento = velVientoAMEA();
+  const rad = ang * 0.06 * 0.0174533;
+  const componenteX = Math.abs(Math.cos(rad) * viento).toFixed(2);
+
+  const signoNegativo = ang < 1500 || ang >= 4500;
+  const wX = signoNegativo ? -componenteX : +componenteX;
+
+  document.getElementById("wX").value = wX;
+  return wX;
+}
+ function descZ() {
+  const ang = AngVient();
+  const viento = velVientoAMEA();
+  const rad = ang * 0.06 * 0.0174533; 
+
+  const componenteZ = Math.abs(Math.sin(rad) * viento).toFixed(2);
+  const signoNegativo = ang >= 3000; 
+  const wZ = signoNegativo ? -componenteZ : +componenteZ;
+
+  document.getElementById("wZ").value = wZ;
+  return wZ;
+}
+function colK() {
+  const alcance = alcancePvCb();
+  let k;
+
+  if (alcance < 8000) {
+    k = -0.1;
+  } else if (alcance < 10000) {
+    k = -0.02;
+  } else {
+    k = -0.3;
+  }
+
+  return k;
 }
 function colD (){
     if(alcancePvCb () < 8400){
@@ -427,88 +385,99 @@ function colD (){
     }
     return D;
 }
-function corrOR (){
-    var a1 = Number.parseFloat(descX () * colK ());
-    var a2 = Number.parseFloat(descZ () * colD ());
-    var correcOr = Number.parseFloat(a1 + a2).toFixed(2);
-    document.getElementById("correcOr").value = correcOr;
-    return correcOr;
-}
-function colE (){
+function corrOR() {
+  const a1 = descX() * colK(); 
+  const a2 = descZ() * colD();
+  const correcOr = (a1 + a2).toFixed(2);
+  document.getElementById("correcOr").value = correcOr;
 
-    if(alcancePvCb () >=6000 && alcancePvCb () <7000){
-        var E = Number.parseFloat(((0.00013 * alcancePvCb ()) - (0.003)) * (-1)).toFixed(2);
-        }
-        else if(alcancePvCb () >=7000 && alcancePvCb () <11000){
-            var E = Number.parseFloat(((0.00015 * alcancePvCb ()) - (0.14)) * (-1)).toFixed(2);
-            }
-        else if(alcancePvCb () >=11000 && alcancePvCb () <12000){
-            var E = Number.parseFloat(((0.000157142857 * alcancePvCb ()) - (0.22)) * (-1)).toFixed(2);
-            }
-        else if(alcancePvCb () >=12000 && alcancePvCb () <13000){
-            var E = Number.parseFloat(((0.00018 * alcancePvCb ()) - (0.49333)) * (-1)).toFixed(2);
-            }
-        else if(alcancePvCb () >=13000 && alcancePvCb () <15000){
-            var E = Number.parseFloat(((0.0002 * alcancePvCb ()) - (0.75)) * (-1)).toFixed(2);
-           }
-        else if(alcancePvCb () >=15000 && alcancePvCb () <16000){
-            var E = Number.parseFloat(((0.000207142857 * alcancePvCb ()) - (0.8590)) * (-1)).toFixed(2);
-           }
-        else if(alcancePvCb () >=16000 && alcancePvCb () <17000){
-            var E = Number.parseFloat(((0.00023 * alcancePvCb ()) - (1.22333)) * (-1)).toFixed(2);
-           }
-        else if(alcancePvCb () >=17000 && alcancePvCb () <18000){
-            var E = Number.parseFloat(((0.00028857 * alcancePvCb ()) - (2.22333)) * (-1)).toFixed(2);
-           }
-        else if(alcancePvCb () >=18000 && alcancePvCb () <19000){
-            var E = Number.parseFloat(((0.00046143 * alcancePvCb ()) - (5.33476)) * (-1)).toFixed(2);
-           }
-        else if(alcancePvCb () >=19000 && alcancePvCb () <20000){
-            var E = Number.parseFloat(((0.00114 * alcancePvCb ()) - (18.3666)) * (-1)).toFixed(2);
-           }
-           else{
-            var E = null;
-           }
-        return E;
+  return correcOr;
 }
-function colF (){
+function colE() {
+  const alcance = alcancePvCb();
+  let E = null;
 
-    if(alcancePvCb () >=6000 && alcancePvCb () <8400){
-        var F = Number.parseFloat(((0.0000211538461538 * alcancePvCb ()) + (0.7476923)) * (-1)).toFixed(2);
-        }
-    else if(alcancePvCb () >=8400 && alcancePvCb () <12000){
-        var F = Number.parseFloat(((0.00001149122807018 * alcancePvCb ()) + (0.825947)) * (-1)).toFixed(2);
-        }
-    else if(alcancePvCb () >=12000 && alcancePvCb () <17600){
-        var F = Number.parseFloat(((-0.00002167487684729 * alcancePvCb ()) + (1.24147783)) * (-1)).toFixed(2);
-        }
-    else if(alcancePvCb () >=17600 && alcancePvCb () <19600){
-        var F = Number.parseFloat(((-0.00005 * alcancePvCb ()) - (0.02)) * (-1)).toFixed(2);
-        }
-    else if(alcancePvCb () >=19600 && alcancePvCb () <20000){
-        var F = Number.parseFloat(((-0.0004 * alcancePvCb ()) - (4.93333)) * (-1)).toFixed(2);
-        }
-    else{
-        var F = null;
-    }
-    return F;
+  if (alcance >= 6000 && alcance < 7000) {
+    E = ((0.00013 * alcance - 0.003) * -1).toFixed(2);
+  } else if (alcance < 11000) {
+    E = ((0.00015 * alcance - 0.14) * -1).toFixed(2);
+  } else if (alcance < 12000) {
+    E = ((0.000157142857 * alcance - 0.22) * -1).toFixed(2);
+  } else if (alcance < 13000) {
+    E = ((0.00018 * alcance - 0.49333) * -1).toFixed(2);
+  } else if (alcance < 15000) {
+    E = ((0.0002 * alcance - 0.75) * -1).toFixed(2);
+  } else if (alcance < 16000) {
+    E = ((0.000207142857 * alcance - 0.8590) * -1).toFixed(2);
+  } else if (alcance < 17000) {
+    E = ((0.00023 * alcance - 1.22333) * -1).toFixed(2);
+  } else if (alcance < 18000) {
+    E = ((0.00028857 * alcance - 2.22333) * -1).toFixed(2);
+  } else if (alcance < 19000) {
+    E = ((0.00046143 * alcance - 5.33476) * -1).toFixed(2);
+  } else if (alcance < 20000) {
+    E = ((0.00114 * alcance - 18.3666) * -1).toFixed(2);
+  }
+
+  return E;
 }
-function corrAlc (){
-    var a1 = Number.parseFloat(descX () * colE ());
-    var a2 = Number.parseFloat(descZ () * colF ());
-    var correcAlc = Number.parseFloat(a1 + a2).toFixed(2);
-    document.getElementById("correcAlc").value = correcAlc;
-    return correcAlc;
+function colF() {
+  const alcance = alcancePvCb();
+  let F = null;
+
+  if (alcance >= 6000 && alcance < 8400) {
+    F = ((0.0000211538461538 * alcance + 0.7476923) * -1).toFixed(2);
+  } else if (alcance < 12000) {
+    F = ((0.00001149122807018 * alcance + 0.825947) * -1).toFixed(2);
+  } else if (alcance < 17600) {
+    F = ((-0.00002167487684729 * alcance + 1.24147783) * -1).toFixed(2);
+  } else if (alcance < 19600) {
+    F = ((-0.00005 * alcance - 0.02) * -1).toFixed(2);
+  } else if (alcance < 20000) {
+    F = ((-0.0004 * alcance - 4.93333) * -1).toFixed(2);
+  }
+
+  return F;
 }
-function alzaIni(){
-    var alzaIni = Number.parseFloat(Number(alzaCb ()) + Number(corrAlc ())).toFixed(2);
-    document.getElementById("alzaIni").value = alzaIni;
-    return alzaIni;
+
+function corrAlc() {
+  const E = colE();
+  const F = colF();
+
+  if (E === null || F === null) return null;
+
+  const a1 = descX() * parseFloat(E);
+  const a2 = descZ() * parseFloat(F);
+  const correcAlc = (a1 + a2).toFixed(2);
+
+  document.getElementById("correcAlc").value = correcAlc;
+  return correcAlc;
 }
-function orIni(){
-    var orIni = Number.parseFloat(Number(4604) + Number(corrOR ())).toFixed(2);
-    document.getElementById("orientIni").value = orIni;
-    return orIni;
+
+function alzaIni() {
+  const base = parseFloat(alzaCb());
+  const correccion = parseFloat(corrAlc());
+
+  if (isNaN(base) || isNaN(correccion)) return null;
+
+  const alzaIni = base + correccion;
+
+  document.getElementById("alzaIni").value = alzaIni.toFixed(2);
+
+  return alzaIni;
+}
+
+function orIni() {
+  const baseOrient = 4604;
+  const correccion = parseFloat(corrOR());
+
+  if (isNaN(correccion)) return null;
+
+  const orIni = baseOrient + correccion;
+
+  document.getElementById("orientIni").value = orIni.toFixed(2);
+
+  return orIni;
 }
 /*
 function alargarY (){
@@ -614,40 +583,71 @@ function xPrima (){
     return xPrima;
 }
 */
-function calcularComponentes(valor) {
-  const dx = deltaXB();
-  const dy = deltaYB();
-  const angulo = Math.atan2(dy, dx); // dirección del vector desde el origen
-
+function calcularComponentes(valor, anguloMil) {
+  const rad = anguloMil * 0.06 * 0.0174533;
   return {
-    x: Math.cos(angulo) * valor,
-    y: Math.sin(angulo) * valor
+    x: Math.sin(rad) * valor,
+    y: Math.cos(rad) * valor
+  };
+}
+
+function calcularComponentes(valor, anguloMil) {
+  const rad = anguloMil * 0.06 * 0.0174533; // Conversión a radianes
+  return {
+    x: Math.sin(rad) * valor,
+    y: Math.cos(rad) * valor
+  };
+}
+
+function calcularComponentes(valor, anguloMil) {
+  const rad = anguloMil * 0.06 * 0.0174533; // convierte milésimas a radianes
+  return {
+    x: Math.sin(rad) * valor,
+    y: Math.cos(rad) * valor
   };
 }
 
 function calcularXY() {
-  const alargar = Number(document.getElementById("alargar").value);
-  const acortar = Number(document.getElementById("acortar").value);
-  const derecha = Number(document.getElementById("derecha").value);
-  const izquierda = Number(document.getElementById("izquierda").value);
+  const alargar   = parseFloat(document.getElementById("alargar").value)   || 0;
+  const acortar   = parseFloat(document.getElementById("acortar").value)   || 0;
+  const derecha   = parseFloat(document.getElementById("derecha").value)   || 0;
+  const izquierda = parseFloat(document.getElementById("izquierda").value) || 0;
 
-  // componentes individuales
-  const compAlargar = calcularComponentes(alargar);
-  const compAcortar = calcularComponentes(-acortar); // sentido opuesto
-  const compDerecha = calcularComponentes(derecha);
-  const compIzquierda = calcularComponentes(-izquierda); // sentido opuesto
+  const angBase = orientObs(); // dirección central del observador
 
-  // suma total
-  const xPrima = Math.round(
-    compAlargar.x + compAcortar.x + compDerecha.x + compIzquierda.x
-  );
-  const yPrima = Math.round(
-    compAlargar.y + compAcortar.y + compDerecha.y + compIzquierda.y
-  );
+  const compAlargar   = calcularComponentes(alargar, angBase);
+  const compAcortar   = calcularComponentes(acortar, angBase + 3000);    // opuesta
+  const compDerecha   = calcularComponentes(derecha, angBase + 1500);    // perpendicular
+  const compIzquierda = calcularComponentes(izquierda, angBase - 1500);  // opuesta perpendicular
+
+  const xPrima = compAlargar.x + compAcortar.x + compDerecha.x + compIzquierda.x;
+  const yPrima = compAlargar.y + compAcortar.y + compDerecha.y + compIzquierda.y;
 
   return { xPrima, yPrima };
 }
 function deltaXAPri() {
+  const { xPrima } = calcularXY();
+  const xcb = parseFloat(document.getElementById("xcb").value);
+  const xpv = parseFloat(document.getElementById("xpv").value);
+  return (xpv + xPrima) - xcb;
+}
+
+function deltaYAPri() {
+  const { yPrima } = calcularXY();
+  const ycb = parseFloat(document.getElementById("ycb").value);
+  const ypv = parseFloat(document.getElementById("ypv").value);
+  return (ypv + yPrima) - ycb;
+}
+
+function alcancePvCbPri() {
+  const dx = deltaXAPri();
+  const dy = deltaYAPri();
+  const alcance = Math.hypot(dx, dy);
+
+  document.getElementById("alcance").value = alcance.toFixed(2);
+  return alcance;
+}
+/*function deltaXAPri() {
   const { xPrima } = calcularXY(); 
   const xcb = Number(document.getElementById("xcb").value);
   const xpv = Number(document.getElementById("xpv").value);
@@ -669,7 +669,7 @@ function alcancePvCbPri() {
 
   document.getElementById("alcance").value = alcance;
   return alcance;
-}
+}*/
 /*function deltaXAPri (){
     var xcb = Number(document.getElementById("xcb").value);
     var xpv = Number(document.getElementById("xpv").value);
@@ -781,7 +781,7 @@ function alzaCbPri (){
     return alza;
 }
 /*-------------------------------------------------------------------------------------------------------------------------------------*/
-function alzaIniC(){
+/*function alzaIniC(){
     var alzaIniC = Number.parseFloat(Number(alzaCbPri ()) + Number(corrAlc ())).toFixed(2);
     document.getElementById("alzaIni").value = alzaIniC;
     return alzaIniC;
@@ -815,4 +815,40 @@ function orIniP(){
     }
     document.getElementById("orientIni").value = orIniP;
     return orIniP;
+}
+*/
+function alzaIniC() {
+  const alzaIniC = parseFloat(alzaCbPri()) + parseFloat(corrAlc());
+  document.getElementById("alzaIni").value = alzaIniC.toFixed(2);
+  return alzaIniC;
+}
+
+function dirVPri() {
+  const dx = deltaXAPri();
+  const dy = deltaYAPri();
+  const angleDeg = Math.atan2(Math.abs(dx), Math.abs(dy)) * (180 / Math.PI) / 0.06;
+  const dirv = Math.round(angleDeg);
+  let dVP;
+
+  if (dx > 0 && dy > 0) dVP = Math.abs(dirv);
+  else if (dx > 0 && dy < 0) dVP = 3000 - Math.abs(dirv);
+  else if (dx < 0 && dy < 0) dVP = 3000 + Math.abs(dirv);
+  else dVP = 6000 - Math.abs(dirv);
+
+  return dVP;
+}
+
+function difDV() {
+  return Math.round(dirV() - dirVPri());
+}
+
+function orIniP() {
+  const baseOrient = 4604;
+  const correccion = parseFloat(corrOR());
+  const ajusteDV = difDV();
+  const signo = deltaXB() >= 0 && deltaYB() >= 0 ? 1 : -1;
+  const orIniP = baseOrient + correccion + (signo * ajusteDV);
+
+  document.getElementById("orientIni").value = orIniP.toFixed(2);
+  return orIniP;
 }
