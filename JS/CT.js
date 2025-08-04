@@ -491,9 +491,9 @@ function alargarY (){
     var alargar = Number(document.getElementById("alargar").value);
     var y1;
     if(deltaXB() >= 0 && deltaYB() >= 0){
-        y1 = (Math.abs(Math. sin(orO))) * alargar;
+        y1 = (Math. sin(orO)) * alargar;
     }else {
-        y1 = (Math.abs(Math. cos(orO))) * alargar;
+        y1 = (Math. cos(orO)) * alargar;
     }
     return y1;
 }
@@ -503,9 +503,9 @@ function acortarY (){
     var acortar = Number(document.getElementById("acortar").value);
     var y2;
     if(deltaXB() >= 0 && deltaYB() >= 0){
-        y2 = (Math.abs(Math. sin(orO))) * (acortar * -1);
+        y2 = (Math. sin(orO)) * (acortar * -1);
     }else {
-        y2 = (Math.abs(Math. cos(orO))) * (acortar * -1);
+        y2 = (Math. cos(orO)) * (acortar * -1);
     }
     return y2;
 }
@@ -514,9 +514,9 @@ function derechaY (){
     var derecha = Number(document.getElementById("derecha").value);
     var y3;
     if(deltaXB() >= 0 && deltaYB() >= 0){
-        y3 = (Math.abs(Math. cos(orO))) * (derecha * -1);
+        y3 = (Math. cos(orO)) * (derecha * -1);
     }else {
-        y3 = (Math.abs(Math. sin(orO))) * derecha;
+        y3 = (Math. sin(orO)) * derecha;
     }
     return y3;
 }
@@ -525,9 +525,9 @@ function izquierdaY (){
     var izquierda = Number(document.getElementById("izquierda").value);
     var y4;
     if(deltaXB() >= 0 && deltaYB() >= 0){
-        y4 = (Math.abs(Math. cos(orO))) * izquierda;
+        y4 = (Math. cos(orO)) * izquierda;
     }else {
-        y4 = (Math.abs(Math. sin(orO))) * (izquierda * -1);
+        y4 = (Math. sin(orO)) * (izquierda * -1);
     }
     return y4;
 }
@@ -543,9 +543,9 @@ function alargarX (){
     var alargar = Number(document.getElementById("alargar").value);
     var x1;
     if(deltaXB() >= 0 && deltaYB() >= 0){
-        x1 = (Math.abs(Math. cos(orO))) * alargar;
+        x1 = (Math. cos(orO)) * alargar;
     }else {
-        x1 = (Math.abs(Math. sin(orO))) * (alargar * -1);
+        x1 = (Math. sin(orO)) * (alargar * -1);
     }
     return x1;
 }
@@ -555,9 +555,9 @@ function acortarX (){
     var acortar = Number(document.getElementById("acortar").value);
     var x2;
     if(deltaXB() >= 0 && deltaYB() >= 0){
-        x2 = (Math.abs(Math. cos(orO))) * (acortar * -1);
+        x2 = (Math. cos(orO)) * (acortar * -1);
     }else {
-        x2 = (Math.abs(Math. sin(orO))) * acortar;
+        x2 = (Math. sin(orO)) * acortar;
     }
     return x2;
 }
@@ -566,9 +566,9 @@ function derechaX (){
     var derecha = Number(document.getElementById("derecha").value);
     var x3;
     if(deltaXB() >= 0 && deltaYB() >= 0){
-        x3 = (Math.abs(Math. sin(orO))) * (derecha * -1);
+        x3 = (Math. sin(orO)) * (derecha * -1);
     }else {
-        x3 = (Math.abs(Math. cos(orO))) * derecha;
+        x3 = (Math. cos(orO)) * derecha;
     }
     return x3;
 }
@@ -577,9 +577,9 @@ function izquierdaX (){
     var izquierda = Number(document.getElementById("izquierda").value);
     var x4;
     if(deltaXB() >= 0 && deltaYB() >= 0){
-        x4 = (Math.abs(Math. sin(orO))) * izquierda;
+        x4 = (Math. sin(orO)) * izquierda;
     }else {
-        x4 = (Math.abs(Math. cos(orO))) * (izquierda * -1);
+        x4 = (Math. cos(orO)) * (izquierda * -1);
     }
     return x4;
 }
