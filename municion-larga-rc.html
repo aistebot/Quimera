@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Quimera.</title>
+        <link rel="stylesheet" href="./styles.css"> 
+    </head>
+    <body>
+        <div id="contenedor">
+        <div id="contenedorSistema">
+            <div id="recepcioDeDatos">
+                <h1>Quimera..</h1>
+                <h6>Programa de tiro de lanzadores</h6>
+                <h6>Reductor Chico</h6>
+                <h4 class="titulo">Datos</h4> 
+            
+                    <div class="puntos subcajas">
+                        <span>
+                            <label for="xcb">X C.B.:</label>
+                            <input class="coordenada" type="number" id="xcb">
+                        </span>
+                        <span>
+                            <label for="ycb">Y C.B.:</label>
+                            <input class="coordenada" type="number" id="ycb">
+                        </span>
+                        <span>
+                            <label for="zcb">Z C.B.:</label>
+                            <input class="coordenada" type="number" id="zcb">
+                        </span>
+                        <span>
+                            <label for="xpv">X P.V.:</label>
+                            <input class="coordenada" type="number" id="xpv">
+                        </span>
+                        <span>
+                            <label for="ypv">Y P.V..:</label>
+                            <input class="coordenada" type="number" id="ypv">
+                        </span>
+                        <span>
+                            <label for="zpv">Z P.V.:</label>
+                            <input class="coordenada" type="number" id="zpv">
+                        </span>
+                        <span>
+                            <label for="xpo">X P.O.:</label>
+                            <input class="coordenada" type="number" id="xpo">
+                        </span>
+                        <span>
+                            <label for="ypo">Y P.O.:</label>
+                            <input class="coordenada" type="number" id="ypo">
+                        </span>
+                        <span>
+                            <label for="xdr">X D.R.:</label>
+                            <input class="coordenada" type="number" id="xdr">
+                        </span>
+                        <span>
+                            <label for="ydr">Y D.R.:</label>
+                            <input class="coordenada" type="number" id="ydr">
+                        </span>
+                        <span>
+                            <label for="velViento">Velocidad de Viento</label>
+                            <input type="number" id="velViento">
+                        </span>
+                        <span>
+                            <label for="orV">Or. de V.:</label>
+                            <input type="number" id="orV">
+                        </span>
+                    </div>
+                                
+                <input type="button" name="alcance" value="Datos Iniciales" id="btnAlcance" onclick="deltaXA (), deltaYA (), deltaXB (), deltaYB (), deltaXC (), deltaYC (), deltaZ (), alcancePvCb (), alcancePvPo (),cuadrante (), orientObs (), dirV (), orDr (), angVigi (),sitioPvCb (), alzaCb (), altMaxCB (), velVientoAMEA (), AngVient (),  descX (),  descZ (), colK (), colD (), corrOR (), colE (), colF (), corrAlc (), alzaIni(), orIni()">
+              
+                </div>
+    <div class ="bodie">
+        <div class="container">
+            <section id="comandosIniciales">
+                <h2 class="titulo">Comandos Provisorios</h2> 
+
+                <div class="comandos">    
+                   <span>
+                    <label>Cuadrante:</label>
+                    <input type="number" id="cuadrante">
+                   </span> 
+                <span>
+                    <label>Alcance:</label>
+                    <input type="number" id="alcance">
+                </span>   
+                    
+                <span>
+                    <label>Orientación de Referencia: 4600</label>
+                </span>    
+                    
+                <span>
+                    <label>Compensación por rotación: + 4</label>
+                    <p id="4"></p>
+                </span> 
+                    
+                <span>
+                    <label>Orientación del Observador:</label>
+                    <input type="number" id="orObs">
+                </span>    
+                    
+                <span>
+                    <label>D.V.:</label>
+                    <input type="number" id="dV">
+                </span>   
+                    
+                <span>
+                    <label>Orientación a la D.R.:</label>
+                    <input type="number" id="oDr">
+                </span>    
+                    
+                <span>
+                    <label>Ang. Vigilancia.:</label>
+                    <input type="number" id="angVig">
+                </span>  
+                    
+                <span>
+                    <label>Distancia del Observador al blanco:</label>
+                    <input type="number" id="alcPvPo">
+                </span>  
+                    
+                <span>
+                    <label>Alza:</label>
+                    <input type="number" id="alza">
+                </span>   
+                    
+                <span>
+                    <label>Sitio:</label>
+                    <input type="number" id="sitio">
+                </span>   
+            </div>   
+            </section>
+            
+            <section id="datosMeteorologicos">
+                <h2 class="titulo">Datos Meteorológicos</h2> 
+
+                <div class="comandos">
+                    <span>
+                        <label>Ángulo de Viento.:</label>
+                    <input type="number" id="angViento"> 
+                    </span>
+                    
+                <span>
+                    <label>Altura Máxima E.A.:</label>
+                    <input type="number" id="altMax">
+                </span>
+                    
+                <span>
+                    <label>Vel. Viento en Altura Máxima E.A.:</label>
+                    <input type="number" id="vVAltMax">
+                </span>
+                    
+                <span>
+                    <label>WX:</label>
+                    <input type="number" id="wX">
+                </span>
+                     
+                <span>
+                    <label>WZ:</label>
+                    <input type="number" id="wZ">
+                </span>
+                    
+                <span>
+                    <label>Correccion en Orientacion:</label>
+                    <input type="number" id="correcOr">
+                </span>
+                    <span>
+                        <label>Correccion en Alcance:</label>
+                        <input type="number" id="correcAlc">
+                    </span>
+                </div>
+            </section>
+     </div>
+     
+        <div class="container correcion">
+            <div>
+                <section id="correcionOBS">
+                    <h2 class="titulo">Correciiones Observador</h2> 
+
+                    <div class="puntos subcajas">
+                        <span>
+                            <label>Alargar.:</label>
+                        <input class="coordenada" type="number" id="alargar"> 
+                        </span>
+                        
+                    <span>
+                        <label>Acortar:</label>
+                        <input class="coordenada" type="number" id="acortar">
+                    </span>
+                        
+                    <span>
+                        <label>Derecha:</label>
+                        <input class="coordenada" type="number" id="derecha">
+                    </span>
+                        
+                    <span>
+                        <label>Izquierda:</label>
+                        <input class="coordenada" type="number" id="izquierda">
+                    </span>
+                    </div>
+                </section>
+                <section id="datosIniciales">
+                    <h2 class="titulo">Datos Iniciales</h2> 
+
+                    <div class="puntos subcajas">
+                        <span>
+                            <label>Orientación.:</label>
+                        <input type="number" id="orientIni"> 
+                        </span>
+                        
+                    <span>
+                        <label>Sitio:</label>
+                        <input type="number" id="sitioIni">
+                    </span>
+                        
+                    <span>
+                        <label>alza:</label>
+                        <input type="number" id="alzaIni">
+                    </span>
+
+                    </div>
+                </section>
+            </div>
+            <input type="button" name="correc" value="Corrección" id="btnCorrec" onclick="calcularComponentes(), calcularXY(), deltaXAPri(), deltaYAPri(), alcancePvCbPri(), sitioPvCbPri (), alzaCbPri (), alzaIniC (), dirVPri (), difDV (), orIniP()"> 
+        </div>
+    </div>    
+            </div>
+        </div>
+
+
+
+                <script src="./JS/ct-rc.js" type="text/javascript"></script>
+    </body>
+</html>
+
+
+

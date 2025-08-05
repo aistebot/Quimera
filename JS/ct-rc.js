@@ -151,6 +151,8 @@ function sitioPvCb() {
 
   return sitio;
 }
+//------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------
 function alzaCb() {
   const alcance = alcancePvCb();
   let alza = null;
@@ -212,7 +214,7 @@ function alzaCb() {
   document.getElementById("alza").value = alza;
   return alza;
 }
-/*---------------------------------------------------------------------------------------------------------------------------------*/
+
 function altMaxCB() {
   const alcance = alcancePvCb();
   let altMax = null;
@@ -261,6 +263,8 @@ function altMaxCB() {
   document.getElementById("altMax").value = result;
   return result;
 }
+//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
 function velVientoAMEA() {
   const velViento = Number(document.getElementById("velViento").value);
   const altMax = altMaxCB(); 
@@ -322,6 +326,8 @@ function colK() {
 
   return k;
 }
+//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
 function colD (){
     if(alcancePvCb () < 8400){
         var D = 5.1;
@@ -379,6 +385,8 @@ function colD (){
     }
     return D;
 }
+//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
 function corrOR() {
   const a1 = descX() * colK(); 
   const a2 = descZ() * colD();
@@ -387,6 +395,8 @@ function corrOR() {
 
   return correcOr;
 }
+//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
 function colE() {
   const alcance = alcancePvCb();
   let E = null;
@@ -433,7 +443,8 @@ function colF() {
 
   return F;
 }
-
+//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
 function corrAlc() {
   const E = colE();
   const F = colF();
@@ -542,6 +553,8 @@ function sitioPvCbPri (){
     document.getElementById("sitio").value = sitio;
     document.getElementById("sitioIni").value =  sitio;
 }
+//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
 function alzaCbPri (){
 
     if(alcancePvCbPri () >=6000 && alcancePvCbPri () <7000){
@@ -627,14 +640,13 @@ function alzaCbPri (){
         }
     return alza;
 }
-/*-------------------------------------------------------------------------------------------------------------------------------------*/
-
+//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
 function alzaIniC() {
   const alzaIniC = parseFloat(alzaCbPri()) + parseFloat(corrAlc());
   document.getElementById("alzaIni").value = alzaIniC.toFixed(2);
   return alzaIniC;
 }
-
 function dirVPri() {
   const dx = deltaXAPri();
   const dy = deltaYAPri();
@@ -649,11 +661,9 @@ function dirVPri() {
 
   return dVP;
 }
-
 function difDV() {
   return Math.round(dirV() - dirVPri());
 }
-
 function orIniP() {
   const baseOrient = 4604;
   const correccion = parseFloat(corrOR());
