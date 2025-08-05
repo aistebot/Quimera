@@ -1,3 +1,13 @@
+const tablaAlza = {
+  4000: 127, 4200: 131, 4400: 136, 4600: 142, 4800: 147,
+  5000: 152, 5200: 158, 5400: 164, 5600: 171, 5800: 177,
+  6000: 184, 6200: 192, 6400: 199, 6600: 207, 6800: 216,
+  7000: 224, 7200: 233, 7400: 242, 7600: 252, 7800: 262,
+  8000: 273, 8200: 284, 8400: 296, 8600: 308, 8800: 321,
+  9000: 334, 9200: 348, 9400: 362, 9600: 377, 9800: 393, 10000: 411
+};
+
+
 function deltaXA (){
     var xcb = Number(document.getElementById("xcb").value);
     var xpv = Number(document.getElementById("xpv").value);
@@ -153,7 +163,7 @@ function sitioPvCb() {
 }
 //-----------------------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------
-function alzaCb() {
+/*function alzaCb() {
   const alcance = alcancePvCb();
   let alza = null;
 
@@ -212,6 +222,32 @@ function alzaCb() {
   }
 
   document.getElementById("alza").value = alza;
+  return alza;
+}*/
+function alzaCb() {
+  const alcance = alcancePvCb();
+
+  const pasos = Object.keys(tablaAlza).map(Number);
+  const i = pasos.findIndex((x) => x > alcance) - 1;
+
+  const x0 = pasos[i - 1] || pasos[i];
+  const x1 = pasos[i];
+  const x2 = pasos[i + 1];
+  const x3 = pasos[i + 2] || pasos[i + 1];
+
+  const y0 = tablaAlza[x0];
+  const y1 = tablaAlza[x1];
+  const y2 = tablaAlza[x2];
+  const y3 = tablaAlza[x3];
+
+  const t = (alcance - x1) / (x2 - x1); 
+  const alza =
+    0.5 *
+    ((2 * y1) +
+      (-y0 + y2) * t +
+      (2 * y0 - 5 * y1 + 4 * y2 - y3) * Math.pow(t, 2) +
+      (-y0 + 3 * y1 - 3 * y2 + y3) * Math.pow(t, 3));
+
   return alza;
 }
 /*---------------------------------------------------------------------------------------------------------------------------------*/
