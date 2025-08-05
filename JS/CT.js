@@ -14,6 +14,7 @@ function deltaXB (){
     var xpv = Number(document.getElementById("xpv").value);
     return xpv - xpo;
 }
+
 function deltaYB (){
     var ypo = Number(document.getElementById("ypo").value);
     var ypv = Number(document.getElementById("ypv").value);
