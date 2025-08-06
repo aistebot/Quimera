@@ -299,7 +299,7 @@ function colD (){
     else if(alcancePvCb () < 9200){
         var D = 5.3;
     }
-    else if(alcancePvCb () < 1000){
+    else if(alcancePvCb () < 10000){
         var D = 5.4;
     }
     return D;
@@ -494,7 +494,7 @@ function sitioPvCbPri (){
 }
 
 function alzaCbPri () {
-  const x = alcancePvCbPri (); // Input dinámico
+  const x = alcancePvCbPri (); 
   const xs = Array.from({ length: 30 }, (_, i) => 4000 + i * 200);
   const ys = [
     127, 131, 136, 142, 147, 152, 158, 164, 171, 177,

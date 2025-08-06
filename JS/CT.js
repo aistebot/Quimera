@@ -69,7 +69,7 @@ function orientObs() {
   const dy = deltaYB();
 
   const baseAngle = Math.atan2(Math.abs(dx), Math.abs(dy));
-  const orO = Math.floor((baseAngle * (180 / Math.PI)) / 0.06); // convierte a milésimas
+  const orO = Math.floor((baseAngle * (180 / Math.PI)) / 0.06); 
 
   let orObs;
   if (dx >= 0 && dy >= 0) {
@@ -126,6 +126,7 @@ function orDr() {
   document.getElementById("oDr").value = oDr;
   return oDr;
 }
+
 function angVigi() {
   const observacion = orDr(); 
   const direccion = dirV();   
@@ -141,6 +142,7 @@ function angVigi() {
   document.getElementById("angVig").value = angVig;
   return angVig;
 }
+
 function sitioPvCb() {
   const dz = deltaZ();                 
   const alcance = alcancePvCb();      
@@ -151,6 +153,7 @@ function sitioPvCb() {
 
   return sitio;
 }
+
 function alzaCb() {
   const alcance = alcancePvCb();
   let alza = null;
@@ -212,7 +215,7 @@ function alzaCb() {
   document.getElementById("alza").value = alza;
   return alza;
 }
-/*---------------------------------------------------------------------------------------------------------------------------------*/
+
 function altMaxCB() {
   const alcance = alcancePvCb();
   let altMax = null;
@@ -261,6 +264,7 @@ function altMaxCB() {
   document.getElementById("altMax").value = result;
   return result;
 }
+
 function velVientoAMEA() {
   const velViento = Number(document.getElementById("velViento").value);
   const altMax = altMaxCB(); 
@@ -271,6 +275,7 @@ function velVientoAMEA() {
   document.getElementById("vVAltMax").value = vVAltMax;
   return vVAltMax;
 }
+
 function AngVient() {
   const orV = Number(document.getElementById("orV").value);
   const dirViento = dirV();
@@ -284,6 +289,7 @@ function AngVient() {
   document.getElementById("angViento").value = angViento;
   return angViento;
 }
+
 function descX() {
   const ang = AngVient();
   const viento = velVientoAMEA();
@@ -296,6 +302,7 @@ function descX() {
   document.getElementById("wX").value = wX;
   return wX;
 }
+
  function descZ() {
   const ang = AngVient();
   const viento = velVientoAMEA();
@@ -308,6 +315,7 @@ function descX() {
   document.getElementById("wZ").value = wZ;
   return wZ;
 }
+
 function colK() {
   const alcance = alcancePvCb();
   let k;
@@ -322,6 +330,7 @@ function colK() {
 
   return k;
 }
+
 function colD (){
     if(alcancePvCb () < 8400){
         var D = 5.1;
@@ -379,6 +388,7 @@ function colD (){
     }
     return D;
 }
+
 function corrOR() {
   const a1 = descX() * colK(); 
   const a2 = descZ() * colD();
@@ -387,6 +397,7 @@ function corrOR() {
 
   return correcOr;
 }
+
 function colE() {
   const alcance = alcancePvCb();
   let E = null;
@@ -415,6 +426,7 @@ function colE() {
 
   return E;
 }
+
 function colF() {
   const alcance = alcancePvCb();
   let F = null;
@@ -473,6 +485,7 @@ function orIni() {
 
   return orIni;
 }
+
 function calcularComponentes(valor, anguloMil) {
   const rad = anguloMil * 0.06 * 0.0174533;
   return {
@@ -515,6 +528,7 @@ function calcularXY() {
 
   return { xPrima, yPrima };
 }
+
 function deltaXAPri() {
   const { xPrima } = calcularXY();
   const xcb = parseFloat(document.getElementById("xcb").value);
@@ -542,6 +556,7 @@ function sitioPvCbPri (){
     document.getElementById("sitio").value = sitio;
     document.getElementById("sitioIni").value =  sitio;
 }
+
 function alzaCbPri (){
 
     if(alcancePvCbPri () >=6000 && alcancePvCbPri () <7000){
@@ -627,7 +642,6 @@ function alzaCbPri (){
         }
     return alza;
 }
-/*-------------------------------------------------------------------------------------------------------------------------------------*/
 
 function alzaIniC() {
   const alzaIniC = parseFloat(alzaCbPri()) + parseFloat(corrAlc());
