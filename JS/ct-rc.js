@@ -502,7 +502,7 @@ function sitioPvCbPri (){
 
 function alzaCbPri () {
   const x = alcancePvCbPri (); 
-  const xs = Array.from({ length: 30 }, (_, i) => 4000 + i * 200);
+  const xs = Array.from({ length: 30 }, (_, i) => 6000 + i * 200);
   const ys = [
     157, 161, 166, 171, 176, 181, 186, 192, 197, 203,
     209, 216, 222, 229, 233, 243, 250, 257, 265, 273,
