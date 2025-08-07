@@ -9,7 +9,7 @@ class Usuario {
 // Usuarios pregargados
 let usuarios = [
   new Usuario("Agustina", "1234"),
-  new Usuario("Juan", "abcd"),
+  new Usuario("Lezue", "quimera"),
   new Usuario("María", "pass123")
 ];
 
