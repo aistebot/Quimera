@@ -36,13 +36,13 @@ form.addEventListener("submit", (e) => {
   botones.innerHTML = "";
 
   if (usuarioEncontrado) {
-    mensaje.innerHTML = `<div class="alert alert-success">Bienvenido, ${usuarioEncontrado.nombre} 🎉</div>`;
+    mensaje.innerHTML = `<div class="alert alert-success">Bienvenido, ${usuarioEncontrado.nombre}</div>`;
 
     // Mostrar botones con links
     botones.innerHTML = `
       <a href="municion-larga.html" class="btn btn-outline-primary me-2">Munición Larga</a>
-      <a href="municion-larga-rc.html" class="btn btn-outline-success me-2">Ir a Ejemplo 2</a>
-      <a href="municion-larga-rg.html" class="btn btn-outline-warning">Ir a Ejemplo 3</a>
+      <a href="municion-larga-rc.html" class="btn btn-outline-success me-2">Munición Larga R-G.</a>
+      <a href="municion-larga-rg.html" class="btn btn-outline-warning">Munición Larga R-G.</a>
     `;
   } else {
     mensaje.innerHTML = `<div class="alert alert-danger">Usuario o contraseña incorrectos ❌</div>`;
